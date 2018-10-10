@@ -36,7 +36,7 @@ class Signup extends React.Component {
             type="text"
             value={this.state.firstName}
             onChanged={this.handleInput('firstName')}>
-        </input>
+          </input>
         </form>
       </div>
     );

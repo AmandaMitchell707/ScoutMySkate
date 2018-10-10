@@ -4,7 +4,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      render "api/users/#{user.id}"
+      render "api/users/show"
     else
       render json: @user.errors.full_messages, status: 401
     end
@@ -34,7 +34,7 @@ class Api::UsersController < ApplicationController
 
     if @user
       @user.destroy
-      render :show
+      render json: {}
     else
       render ['User not found.']
     end

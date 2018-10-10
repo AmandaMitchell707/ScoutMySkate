@@ -23,7 +23,7 @@
         country: "United States",
       }
     },
-    routes: {
+    skateRoutes: {
       1: {
         id: 1,
         mapCenter: [37.4938, 20.9385],
@@ -81,8 +81,8 @@
     loading: true/false
   },
   errors: {
-    signUp: ["Username is already in use", "Password must be at least 6 characters"],
-    login: ["Invalid username and/or password"],
+    signUp: ["Email is already in use", "Password must be at least 6 characters"],
+    login: ["Invalid email and/or password"],
     commentForm: ["Comment body cannot be blank"],
   },
   session: { currentUserId: 2 }
