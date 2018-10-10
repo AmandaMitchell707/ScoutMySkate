@@ -3,13 +3,10 @@ Rails.application.routes.draw do
   root "static_pages#root"
 
   namespace :api, defaults: { format: :json } do
-      resources :users, except: [:destroy] do
-        resources :skate_routes, only: [:index]
-      end
-
-      resource :session, only: [:new, :create, :destroy]
-      resources :skate_routes
-      # post '/search', to: 'users#search'
+    resource :session, only: [:new, :create, :destroy]
+    resources :skate_routes
+    resources :users, except: [:destroy] do
+      resources :skate_routes, only: [:index]
     end
-
+  end
 end

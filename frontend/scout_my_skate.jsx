@@ -6,14 +6,8 @@ import Root from './components/root';
 
 // testing imports:
 import { createNewUser, login, logout } from './actions/session_actions';
-import * as sessionApiUtil from './util/session_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
-  window.postUser = sessionApiUtil.postUser;
-  window.postSession = sessionApiUtil.postSession;
-  window.deleteSession = sessionApiUtil.deleteSession;
-
-
   window.createNewUser = createNewUser;
   window.login = login;
   window.logout = logout;
