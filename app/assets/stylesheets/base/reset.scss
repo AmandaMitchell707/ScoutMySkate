@@ -1,0 +1,31 @@
+html, body, header, nav, h1, h2, h3, a, ul, li, button,
+section, img, div, p, form, label, input, textarea,
+span, article, footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  box-sizing: inherit;
+}
+
+article, aside, figcaption, figure,
+footer, header, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}

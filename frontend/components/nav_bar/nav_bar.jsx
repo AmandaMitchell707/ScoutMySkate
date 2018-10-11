@@ -3,21 +3,21 @@ import { Link } from 'react-router-dom';
 
 export default ({ currentUser, logout }) => {
   const display = currentUser ? (
-    <div>
+    <div className="nav-bar-inner">
       <p>{currentUser.firstName} {currentUser.lastName}</p>
       <button onClick={logout}>Logout</button>
     </div>
   ) : (
     <div>
-      <Link className="btn" to="/auth/signup">SIGN UP</Link>
-      <Link className="btn" to="/auth/login">Log In</Link>
+      <Link className="green-button" to="/auth/signup">SIGN UP</Link>
+      <Link className="grey-button" to="/auth/login">Log In</Link>
     </div>
   );
 
   return (
-    <header className="nav-bar">
-      <h1 className="logo">Scout My Skate</h1>
+    <header className="nav-bar-outer">
       <div>
+        <Link className="logo" to="/">Scout My Skate</Link>
         {display}
       </div>
     </header>
