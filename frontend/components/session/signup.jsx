@@ -7,19 +7,20 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: '',
-      lastName: '',
+      fname: '',
+      lname: '',
       email: '',
       password: '',
       day: '',
       month: '',
       year: '',
-      birthDate: '',
+      birthday: '',
       gender: '',
       country: 'United States',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.authState = this.authState.bind(this);
+    this.genderClickHandler = this.genderClickHandler.bind(this);
   }
 
   handleInput(type) {
@@ -30,21 +31,28 @@ class Signup extends React.Component {
 
   authState() {
     return {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      first_name: this.state.fname,
+      last_name: this.state.lname,
       email: this.state.email,
       password: this.state.password,
-      birthDate: `${this.state.year}-${this.state.month}-${this.state.day}`,
+      birth_date: `${this.state.year}-${this.state.month}-${this.state.day}`,
       gender: this.state.gender,
       country: this.state.country,
     };
   }
 
-
+  genderClickHandler(e) {
+    $(".gender-container div").removeClass("gender-focus");
+    this.setState({ gender: e.target.id });
+    $(".gender-container div").each((idx, div) => {
+      if (div.id === e.target.id) {
+        $(div).addClass("gender-focus");
+      }
+    });
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    // console.log(this.state, this.authState());
     this.props.createNewUser(this.authState())
       .then(() => this.props.history.push('/'));
   }
@@ -54,28 +62,29 @@ class Signup extends React.Component {
       <option value={country} key={country}>{country}</option>
     ));
 
-    console.log(this.state);
     return (
       <div className="session-form-container">
         <div className="session-form-header">
           <Link to="/auth/login" className="alt-login-link"><span>Log In</span></Link>
           <h2 className="auth-title">SIGN UP</h2>
         </div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             className="auth-input"
             type="text"
-            value={this.state.firstName}
+            value={this.state.fname}
             placeholder="First name"
-            onChange={this.handleInput('firstName')}
+            onChange={this.handleInput('fname')}
+            required="required"
           />
           <br />
           <input
             className="auth-input"
             type="text"
-            value={this.state.lastName}
+            value={this.state.lname}
             placeholder="Last name"
-            onChange={this.handleInput('lastName')}
+            onChange={this.handleInput('lname')}
+            required="required"
           /><br />
           <input
             className="auth-input"
@@ -83,6 +92,7 @@ class Signup extends React.Component {
             value={this.state.email}
             placeholder="Email"
             onChange={this.handleInput('email')}
+            required
           />
           <br />
           <input
@@ -91,6 +101,7 @@ class Signup extends React.Component {
             value={this.state.password}
             placeholder="Password"
             onChange={this.handleInput('password')}
+            required="required"
           />
           <br />
           <div className="birthday-container">
@@ -143,18 +154,24 @@ class Signup extends React.Component {
           <br />
           <div className="gender-container">
             <div
+              id="m"
               className="auth-input gender"
-              onClick={() => this.setState({ gender: 'm' })}
+              value="m"
+              onClick={this.genderClickHandler}
               >Male
             </div>
             <div
+              id="f"
               className="auth-input gender"
-              onClick={() => this.setState({ gender: 'f' })}
+              value="f"
+              onClick={this.genderClickHandler}
               >Female
             </div>
             <div
+              id="o"
               className="auth-input gender"
-              onClick={() => this.setState({ gender: 'o' })}
+              value="o"
+              onClick={this.genderClickHandler}
               >Other
             </div>
           </div>
@@ -170,7 +187,7 @@ class Signup extends React.Component {
             }
           </select>
           <br />
-          <button className="auth-submit-button" onClick={this.handleSubmit}>Sign Up</button>
+          <button className="auth-submit-button">Sign Up</button>
         </form>
       </div>
     );

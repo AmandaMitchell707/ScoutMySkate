@@ -6,19 +6,19 @@
     users: {
       1: {
         id: 1,
-        firstName: "Amanda",
-        lastName: "Mitchell",
+        fname: "Amanda",
+        lname: "Mitchell",
         email: "me@gmail.com",
-        birthDate: "12/04/1989",
+        birthday: "12/04/1989",
         gender: "female",
         country: "United States",
       },
       2: {
         id: 2,
-        firstName: "Bonnie",
-        lastName: "Thunders",
+        fname: "Bonnie",
+        lname: "Thunders",
         email: "skater@girl.com",
-        birthDate: "09/06/1983",
+        birthday: "09/06/1983",
         gender: "female",
         country: "United States",
       }
@@ -87,10 +87,10 @@
   },
   session: { currentUser: {
     id: 2,
-    firstName: "Bonnie",
-    lastName: "Thunders",
+    fname: "Bonnie",
+    lname: "Thunders",
     email: "skater@girl.com",
-    birthDate: "09/06/1983",
+    birthday: "09/06/1983",
     gender: "female",
     country: "United States",
   } }

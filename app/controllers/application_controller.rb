@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
-  
+  protect_from_forgery with: :null_session
+
   helper_method :current_user, :logged_in?
+
+  before_action :underscore_params!
 
   def current_user
     return nil unless session[:session_token]
@@ -30,5 +32,11 @@ class ApplicationController < ActionController::Base
 
   def require_logged_in
     redirect_to new_session_url unless logged_in?
+  end
+
+  private
+
+  def underscore_params!
+    params.transform_keys!(&:underscore)
   end
 end
