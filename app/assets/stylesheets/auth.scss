@@ -5,10 +5,6 @@
   color: #9297A3;
 }
 
-.session-form-header {
-
-}
-
 .alt-login-link, .auth-title {
   color: inherit;
   font-weight: 900;
@@ -52,7 +48,7 @@
   color: #9297A3;
 }
 
-.auth-input:focus {
+.auth-input:focus, .gender-focus {
   outline: none;
   background: #FFFFFF;
   border-color: #007EFF;

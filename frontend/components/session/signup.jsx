@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { days, months, years } from '../../util/birthday_util';
+import { days, months, years, countries } from '../../util/signup_form_util';
 
 class Signup extends React.Component {
 
@@ -16,9 +16,10 @@ class Signup extends React.Component {
       year: '',
       birthDate: '',
       gender: '',
-      country: '',
+      country: 'United States',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.authState = this.authState.bind(this);
   }
 
   handleInput(type) {
@@ -27,13 +28,32 @@ class Signup extends React.Component {
     };
   }
 
+  authState() {
+    return {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+      birthDate: `${this.state.year}-${this.state.month}-${this.state.day}`,
+      gender: this.state.gender,
+      country: this.state.country,
+    };
+  }
+
+
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewUser(this.state)
+    // console.log(this.state, this.authState());
+    this.props.createNewUser(this.authState())
       .then(() => this.props.history.push('/'));
   }
 
   render() {
+    const countryOptions = countries.map(country => (
+      <option value={country} key={country}>{country}</option>
+    ));
+
     console.log(this.state);
     return (
       <div className="session-form-container">
@@ -138,6 +158,17 @@ class Signup extends React.Component {
               >Other
             </div>
           </div>
+          <br />
+          <select
+            name="country"
+            className="auth-input country"
+            value={this.state.country}
+            onChange={this.handleInput('country')}>
+              <option >Country</option>
+            {
+              countryOptions
+            }
+          </select>
           <br />
           <button className="auth-submit-button" onClick={this.handleSubmit}>Sign Up</button>
         </form>
