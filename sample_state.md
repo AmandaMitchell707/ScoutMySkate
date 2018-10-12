@@ -10,7 +10,7 @@
         lname: "Mitchell",
         email: "me@gmail.com",
         birthday: "12/04/1989",
-        gender: "female",
+        gender: "f",
         country: "United States",
       },
       2: {
@@ -19,7 +19,7 @@
         lname: "Thunders",
         email: "skater@girl.com",
         birthday: "09/06/1983",
-        gender: "female",
+        gender: "f",
         country: "United States",
       }
     },
@@ -91,7 +91,7 @@
     lname: "Thunders",
     email: "skater@girl.com",
     birthday: "09/06/1983",
-    gender: "female",
+    gender: "f",
     country: "United States",
   } }
 }
