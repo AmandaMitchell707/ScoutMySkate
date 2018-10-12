@@ -23,6 +23,18 @@ class Login extends React.Component {
       .then(() => this.props.history.replace('/'));
   }
 
+  renderErrors() {
+    return (
+      <ul className="errors">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
       <div className="session-form-container">
@@ -31,6 +43,7 @@ class Login extends React.Component {
           <h2 className="auth-title">LOG IN</h2>
         </div>
         <form>
+          {this.renderErrors()}
           <input
             className="auth-input"
             type="email"

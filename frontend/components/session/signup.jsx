@@ -23,12 +23,6 @@ class Signup extends React.Component {
     this.genderClickHandler = this.genderClickHandler.bind(this);
   }
 
-  handleInput(type) {
-    return (e) => {
-      this.setState({ [type]: e.target.value })
-    };
-  }
-
   authState() {
     return {
       first_name: this.state.fname,
@@ -38,6 +32,12 @@ class Signup extends React.Component {
       birth_date: `${this.state.year}-${this.state.month}-${this.state.day}`,
       gender: this.state.gender,
       country: this.state.country,
+    };
+  }
+
+  handleInput(type) {
+    return (e) => {
+      this.setState({ [type]: e.target.value })
     };
   }
 
@@ -57,9 +57,29 @@ class Signup extends React.Component {
       .then(() => this.props.history.push('/'));
   }
 
+  renderErrors() {
+    return (
+      <ul className="errors">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     const countryOptions = countries.map(country => (
       <option value={country} key={country}>{country}</option>
+    ));
+
+    const dayOptions = days.map(day => (
+      <option value={day} key={day}>{day}</option>
+    ));
+
+    const yearOptions = years.map(year => (
+      <option value={year} key={year}>{year}</option>
     ));
 
     return (
@@ -69,6 +89,8 @@ class Signup extends React.Component {
           <h2 className="auth-title">SIGN UP</h2>
         </div>
         <form onSubmit={this.handleSubmit}>
+          {this.renderErrors()}
+          <br />
           <input
             className="auth-input"
             type="text"
@@ -111,12 +133,7 @@ class Signup extends React.Component {
               value={this.state.day}
               onChange={this.handleInput('day')}>
                 <option >Day</option>
-              {
-                days.map(day => (
-                  <option value={day} key={day}>{day}</option>
-                  )
-                )
-              }
+                {dayOptions}
             </select>
             <select
               name="month"
@@ -143,12 +160,7 @@ class Signup extends React.Component {
               value={this.state.year}
               onChange={this.handleInput('year')}>
                 <option >Year</option>
-              {
-                years.map(year => (
-                  <option value={year} key={year}>{year}</option>
-                  )
-                )
-              }
+                {yearOptions}
             </select>
           </div>
           <br />
@@ -182,9 +194,7 @@ class Signup extends React.Component {
             value={this.state.country}
             onChange={this.handleInput('country')}>
               <option >Country</option>
-            {
-              countryOptions
-            }
+              {countryOptions}
           </select>
           <br />
           <button className="auth-submit-button">Sign Up</button>
