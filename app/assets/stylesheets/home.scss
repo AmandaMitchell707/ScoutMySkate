@@ -1,7 +1,65 @@
+.home-container {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .home-main {
-  width: inherit;
+  text-align: right;
+  color: white;
+  padding: 18px;
+  width: 1315px;
   height: 900px;
   background-image: url("https://cdn.pixabay.com/photo/2017/03/23/16/28/street-2168790_1280.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .home-main {
+    padding: 36px;
+  }
+}
+
+.title > * {
+  color: #1E211E;
+  font-family: 'Armour-Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: right;
+  font-weight: 900;
+  line-height: 1.17;
+  letter-spacing: 6px;
+  white-space: pre-line;
+  padding: 18px;
+  margin-bottom: 6px;
+  max-width: 1360px;
+}
+
+.bar {
+  width: 87px;
+  border: 3px solid currentColor;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+  margin-top: 9px;
+  margin-bottom: 9px;
+}
+
+.own-it {
+  padding-right: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-right: 0;
+}
+
+@media (min-width: 993px) {
+  .title > * {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 1315px) {
+  .home-main {
+    width: 100vw;
+  }
 }
