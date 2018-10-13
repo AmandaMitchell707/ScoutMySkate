@@ -23,6 +23,10 @@ class Signup extends React.Component {
     this.genderClickHandler = this.genderClickHandler.bind(this);
   }
 
+  componentDidMount() {
+    this.props.clearErrors();
+  }
+
   authState() {
     return {
       first_name: this.state.fname,

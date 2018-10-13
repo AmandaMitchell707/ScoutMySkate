@@ -62,6 +62,7 @@
 
 .nav-login-logout {
   margin: auto 5px auto 5px;
+  padding: 0;
   color: #9297a3;
   font-size: 14px;
   font-weight: 500;
@@ -69,12 +70,16 @@
   border-bottom: 2px solid transparent;
   text-align: center;
   letter-spacing: -0.4px;
+  background-color: transparent;
+}
+
+.nav-login-logout:hover {
+  color: #424242;
 }
 
 @media only screen and (min-width: 993px) {
   .nav-login-logout {
     font-size: 14px;
-    padding: 0 15px;
   }
 }
 
