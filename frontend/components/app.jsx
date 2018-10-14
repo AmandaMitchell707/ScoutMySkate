@@ -6,7 +6,7 @@ import Home from './home/home';
 import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
-export default () => (
+const App = () => (
   <div>
     <Route path="/" component={NavBarContainer} />
     <Route exact path="/" component={Home} />
@@ -14,3 +14,5 @@ export default () => (
     <AuthRoute path="/auth/login" component={LoginContainer} />
   </div>
 );
+
+export default App;

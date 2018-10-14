@@ -8,13 +8,15 @@ import Root from './components/root';
 import { createNewUser, login, logout } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  let store = configureStore();
+  const store = configureStore();
 
+  // TESTING START
   window.createNewUser = createNewUser;
   window.login = login;
   window.logout = logout;
   window.dispatch = store.dispatch;
   window.getState = store.getState;
+  // TESTING END
 
   const rootEl = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, rootEl);

@@ -85,14 +85,6 @@
     login: ["Invalid email and/or password"],
     commentForm: ["Comment body cannot be blank"],
   },
-  session: { currentUser: {
-    id: 2,
-    fname: "Bonnie",
-    lname: "Thunders",
-    email: "skater@girl.com",
-    birthday: "09/06/1983",
-    gender: "f",
-    country: "United States",
-  } }
+  session: { id: 2 }
 }
 ```
