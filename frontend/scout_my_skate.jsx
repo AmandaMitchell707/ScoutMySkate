@@ -8,7 +8,7 @@ import Root from './components/root';
 import { createNewUser, login, logout } from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
-  const store = configureStore();
+  let store = configureStore();
 
   window.createNewUser = createNewUser;
   window.login = login;
