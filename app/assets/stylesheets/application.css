@@ -38,3 +38,8 @@ h2 {
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
 }
+
+#map-container {
+  height: 500px;
+  width: 500px;
+}

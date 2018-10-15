@@ -19,12 +19,12 @@
 * index on session_token, unique: true
 
 
-## `routes`
+## `skate_routes`
 **column name**      | **data type** | **details**
 ---------------------|---------------|-----------------------
 `id`                 | integer       | not null, primary key
-`map_center`         | array         | not null
-`zoom`               | integer       | not null
+`markers`            | array         | not null
+`title`              | string        | not null
 `description`        | text          | optional
 `completion_time`    | time          | optional
 `author_id`          | integer       | not null, foreign key
@@ -32,6 +32,7 @@
 `updated_at`         | datetime      | not null
 
 * index on author_id
+* markers is an array of objects that each have a lat and lng key
 
 
 ## `comments`

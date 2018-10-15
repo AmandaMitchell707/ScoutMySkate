@@ -37,4 +37,8 @@ class User < ApplicationRecord
     self.session_token ||= SecureRandom.urlsafe_base64
   end
 
+  has_many :skate_routes,
+    foreign_key: :author_id,
+    class_name: :SkateRoute
+
 end

@@ -27,7 +27,7 @@
       1: {
         id: 1,
         mapCenter: [37.4938, 20.9385],
-        zoom: 6,
+        title: "Test",
         description: "This skate starts downtown and ends up by the river.",
         completionTime: '0:30:00',
         authorId: 1,
@@ -35,7 +35,7 @@
       2: {
         id: 2,
         mapCenter: [108.6154, 130.4611],
-        zoom: 8,
+        title: "Skate parks",
         description: "This skate takes you by several SF skate parks.",
         completionTime: '2:30:00',
         authorId: 1,
@@ -43,7 +43,7 @@
       3: {
         id: 3,
         mapCenter: [18.6115, 164.8865],
-        zoom: 11,
+        title: "Creek Skate",
         description: "This is my favorite skate through the creek path in Burlingame.",
         completionTime: '1:30:00',
         authorId: 2,
