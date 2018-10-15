@@ -7,14 +7,14 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fname: '',
-      lname: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
       day: '',
       month: '',
       year: '',
-      birthday: '',
+      birthDate: '',
       gender: '',
       country: 'United States',
     };
@@ -29,8 +29,8 @@ class Signup extends React.Component {
 
   authState() {
     return {
-      first_name: this.state.fname,
-      last_name: this.state.lname,
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
       email: this.state.email,
       password: this.state.password,
       birth_date: `${this.state.year}-${this.state.month}-${this.state.day}`,
@@ -98,18 +98,18 @@ class Signup extends React.Component {
           <input
             className="auth-input"
             type="text"
-            value={this.state.fname}
+            value={this.state.firstName}
             placeholder="First name"
-            onChange={this.handleInput('fname')}
+            onChange={this.handleInput('firstName')}
             required="required"
           />
           <br />
           <input
             className="auth-input"
             type="text"
-            value={this.state.lname}
+            value={this.state.lastName}
             placeholder="Last name"
-            onChange={this.handleInput('lname')}
+            onChange={this.handleInput('lastName')}
             required="required"
           /><br />
           <input

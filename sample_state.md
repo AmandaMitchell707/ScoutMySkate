@@ -6,19 +6,19 @@
     users: {
       1: {
         id: 1,
-        fname: "Amanda",
-        lname: "Mitchell",
+        firstName: "Amanda",
+        lastName: "Mitchell",
         email: "me@gmail.com",
-        birthday: "12/04/1989",
+        birthDate: "12/04/1989",
         gender: "f",
         country: "United States",
       },
       2: {
         id: 2,
-        fname: "Bonnie",
-        lname: "Thunders",
+        firstName: "Bonnie",
+        lastName: "Thunders",
         email: "skater@girl.com",
-        birthday: "09/06/1983",
+        birthDate: "09/06/1983",
         gender: "f",
         country: "United States",
       }
