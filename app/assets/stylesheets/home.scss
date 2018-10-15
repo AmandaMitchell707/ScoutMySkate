@@ -16,12 +16,6 @@
   background-size: 100%;
 }
 
-@media only screen and (min-width: 768px) {
-  .home-main {
-    padding: 36px;
-  }
-}
-
 .title > * {
   color: #1E211E;
   font-family: 'Armour-Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -50,6 +44,12 @@
   padding-top: 20px;
   padding-bottom: 20px;
   margin-right: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .home-main {
+    padding: 36px;
+  }
 }
 
 @media (min-width: 993px) {

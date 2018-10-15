@@ -1,0 +1,2 @@
+module SkateRoutesHelper
+end

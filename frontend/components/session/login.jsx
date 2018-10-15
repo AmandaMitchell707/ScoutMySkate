@@ -24,7 +24,7 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.login(this.state)
-      .then(() => this.props.history.replace('/'));
+      .then(() => this.props.history.replace('/routes/create'));
   }
 
   renderErrors() {

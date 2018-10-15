@@ -15,10 +15,21 @@ class NewRouteMap extends React.Component {
     this.map = new google.maps.Map(this.mapNode, mapOptions);
   }
 
+  addMarker(coordinates) {
+    let marker = new google.maps.Marker({
+      position: coordinates,
+      map: this.map,
+    });
+  }
+
   render() {
+    this.addMarker({ lat: 37.7758, lng: -122.435 });
+
     return (
-      <div id='map-container' ref={ map => this.mapNode = map}>
+      <div id='map-container' ref={ map => this.mapNode = map }>
       </div>
     );
   }
 }
+
+export default NewRouteMap;
