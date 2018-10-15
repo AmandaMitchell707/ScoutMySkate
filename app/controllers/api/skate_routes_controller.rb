@@ -13,7 +13,7 @@ class Api::SkateRoutesController < ApplicationController
     if @skate_route.save
       render 'api/skate_routes/show'
     else
-      render json: @skate_route.errors.full_messages, status 401
+      render json: @skate_route.errors.full_messages, status: 401
     end
   end
 
