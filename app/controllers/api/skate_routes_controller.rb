@@ -22,6 +22,6 @@ class Api::SkateRoutesController < ApplicationController
   def skate_route_params
     params.require(:skate_route).permit(
       :author_id, :markers, :title, :description, :completion_time
-    )
+    ).transform_keys!(&:underscore)
   end
 end

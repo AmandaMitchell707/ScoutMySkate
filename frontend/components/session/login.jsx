@@ -9,10 +9,23 @@ class Login extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   componentDidMount() {
     this.props.clearErrors();
+  }
+
+  renderErrors() {
+    return (
+      <ul className="errors">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   handleInput(type) {
@@ -27,16 +40,9 @@ class Login extends React.Component {
       .then(() => this.props.history.replace('/routes/create'));
   }
 
-  renderErrors() {
-    return (
-      <ul className="errors">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+  handleDemoLogin(e) {
+    e.preventDefault();
+    this.props.loginDemoUser();
   }
 
   render() {
@@ -65,6 +71,7 @@ class Login extends React.Component {
           />
           <br />
           <button className="auth-submit-button" onClick={this.handleSubmit}>Log In</button>
+          <button className="auth-submit-button" onClick={this.handleDemoLogin}>Demo Log In</button>
         </form>
       </div>
     );

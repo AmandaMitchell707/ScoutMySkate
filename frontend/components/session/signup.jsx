@@ -19,24 +19,24 @@ class Signup extends React.Component {
       country: 'United States',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.authState = this.authState.bind(this);
     this.genderClickHandler = this.genderClickHandler.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   componentDidMount() {
     this.props.clearErrors();
   }
 
-  authState() {
-    return {
-      first_name: this.state.firstName,
-      last_name: this.state.lastName,
-      email: this.state.email,
-      password: this.state.password,
-      birth_date: `${this.state.year}-${this.state.month}-${this.state.day}`,
-      gender: this.state.gender,
-      country: this.state.country,
-    };
+  renderErrors() {
+    return (
+      <ul className="errors">
+        {this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
   }
 
   handleInput(type) {
@@ -57,29 +57,26 @@ class Signup extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewUser(this.authState())
-      .then(() => this.props.history.push('/'));
+    this.props.createNewUser(this.state())
+      .then(() => this.props.history.push('/routes/create'));
   }
 
-  renderErrors() {
-    return (
-      <ul className="errors">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
-            {error}
-          </li>
-        ))}
-      </ul>
-    );
+  handleDemoLogin(e) {
+    e.preventDefault();
+    this.props.loginDemoUser();
   }
 
   render() {
-    const countryOptions = countries.map(country => (
-      <option value={country} key={country}>{country}</option>
+    const countryOptions = countries.map((country, idx) => (
+      <option value={country} key={idx}>{country}</option>
     ));
 
     const dayOptions = days.map(day => (
       <option value={day} key={day}>{day}</option>
+    ));
+
+    const monthOptions = months.map((month, idx) => (
+      <option value={month} key={idx}>{month}</option>
     ));
 
     const yearOptions = years.map(year => (
@@ -145,18 +142,7 @@ class Signup extends React.Component {
               value={this.state.month}
               onChange={this.handleInput('month')}>
               <option >Month</option>
-              <option value="01">January</option>
-              <option value="02">February</option>
-              <option value="03">March</option>
-              <option value="04">April</option>
-              <option value="05">May</option>
-              <option value="06">June</option>
-              <option value="07">July</option>
-              <option value="08">August</option>
-              <option value="09">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
+              {monthOptions}
             </select>
             <select
               name="year"
@@ -202,6 +188,7 @@ class Signup extends React.Component {
           </select>
           <br />
           <button className="auth-submit-button">Sign Up</button>
+          <button onClick={this.handleDemoLogin} className="auth-submit-button">Demo Log In</button>
         </form>
       </div>
     );
