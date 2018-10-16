@@ -63,7 +63,6 @@ class NewRouteMap extends React.Component {
             scale: iconScale
         }
     });
-
     this.markers.push(marker);
   }
 
@@ -73,10 +72,6 @@ class NewRouteMap extends React.Component {
     }
 
     let start = this.markers[0].position;
-    // this.markers[0].icon = {
-    //   path: google.maps.SymbolPath.CIRCLE,
-    //   scale: 0
-    // }
     let end = this.markers[this.markers.length - 1].position;
     let waypoints = [];
 
@@ -87,6 +82,7 @@ class NewRouteMap extends React.Component {
       });
     }
 
+    debugger;
 
     const request = {
       origin: start,
@@ -115,4 +111,4 @@ class NewRouteMap extends React.Component {
   }
 }
 
-export default NewRouteMap;
+export default RouteForm;
