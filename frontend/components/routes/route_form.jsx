@@ -5,27 +5,29 @@ class RouteForm extends React.Component {
     super(props);
     this.map = null;
     this.markers = [];
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsDisplay = new google.maps.DirectionsRenderer({ preserveViewport: true });
   }
 
   componentDidMount() {
     this.initMap();
+
     // this.addMarker({ lat: 37.7990, lng: -122.4014 });
   }
 
   initMap() {
-    var directionsService = new google.maps.DirectionsService();
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-
     const mapOptions = {
+      // set default center to SF
       center: { lat: 37.7758, lng: -122.435 },
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
+      draggableCursor: 'crosshair',
     };
 
     let map = new google.maps.Map(this.mapNode, mapOptions);
     let infoWindow = new google.maps.InfoWindow;
 
-    // set map center to user's current position, or SF if position not given
+    // set map center to user's current position
     let pos;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -40,12 +42,12 @@ class RouteForm extends React.Component {
       });
     }
 
-    directionsDisplay.setMap(map);
+    this.directionsDisplay.setMap(map);
     this.map = map;
 
     this.map.addListener('click', event => {
       this.addMarker({ lat: event.latLng.lat(), lng: event.latLng.lng() });
-      this.calcAndDisplayRoute(directionsService, directionsDisplay);
+      this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
     });
   }
 
@@ -60,10 +62,16 @@ class RouteForm extends React.Component {
       map: this.map,
       icon: {
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-            scale: iconScale
-        }
+            scale: iconScale,
+      }
     });
     this.markers.push(marker);
+  }
+
+  clearMap(e) {
+    e.preventDefault();
+    this.markers = [];
+    this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
   }
 
   calcAndDisplayRoute(directionsService, directionsDisplay) {
@@ -82,8 +90,6 @@ class RouteForm extends React.Component {
       });
     }
 
-    debugger;
-
     const request = {
       origin: start,
       waypoints: waypoints,
@@ -91,9 +97,9 @@ class RouteForm extends React.Component {
       travelMode: google.maps.DirectionsTravelMode.WALKING,
     };
 
-    directionsService.route(request, (response, status) => {
+    this.directionsService.route(request, (response, status) => {
       if (status == 'OK') {
-        directionsDisplay.setDirections(response);
+        this.directionsDisplay.setDirections(response);
       }
     });
   }
