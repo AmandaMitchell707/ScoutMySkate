@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #map-container {
-  height: 700px;
-  width: 100%;
+  height: 100%;
+  width: calc(100% - 341px);
+}
+
+.new-map-page {
+  height: calc(100% - 71px);
+  display: flex;
+}
+
+.map-side-bar {
+  width: 340px;
 }

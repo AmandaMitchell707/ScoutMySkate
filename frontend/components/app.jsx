@@ -9,11 +9,11 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import Home from './home/home';
 import SignupContainer from './session/signup_container';
 import LoginContainer from './session/login_container';
-import NewRouteMap from './new_route_map';
+import NewRouteMap from './routes/new_route_map';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
+  <div id="app">
     <header>
       <Route path="/" component={NavBarContainer} />
     </header>

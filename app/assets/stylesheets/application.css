@@ -16,6 +16,7 @@
 html {
   font-size: 14px;
   box-sizing: border-box;
+  height: 100%;
 }
 
 body {
@@ -37,4 +38,12 @@ h2 {
   -webkit-margin-after: 0.83em;
   -webkit-margin-start: 0px;
   -webkit-margin-end: 0px;
+}
+
+#root {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
 }
