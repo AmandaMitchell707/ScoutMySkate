@@ -1,4 +1,5 @@
 import React from 'react';
+import MarkerManager from '../../util/marker_manager';
 
 class MapControlToolbar extends React.Component {
   constructor(props) {

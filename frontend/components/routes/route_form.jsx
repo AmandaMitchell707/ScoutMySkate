@@ -1,8 +1,22 @@
 import React from 'react';
+import
+
+const mapOptions = {
+  center: { lat: 37.7758, lng: -122.435 },
+  zoom: 15,
+  mapTypeId: google.maps.MapTypeId.ROADMAP,
+  draggableCursor: 'crosshair',
+};
 
 class RouteForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      name: '',
+      polyline: '',
+    };
+
     this.map = null;
     this.markers = [];
     this.directionsService = new google.maps.DirectionsService();
@@ -11,23 +25,9 @@ class RouteForm extends React.Component {
 
   componentDidMount() {
     this.initMap();
-
-    // this.addMarker({ lat: 37.7990, lng: -122.4014 });
   }
 
-  initMap() {
-    const mapOptions = {
-      // set default center to SF
-      center: { lat: 37.7758, lng: -122.435 },
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      draggableCursor: 'crosshair',
-    };
-
-    let map = new google.maps.Map(this.mapNode, mapOptions);
-    let infoWindow = new google.maps.InfoWindow;
-
-    // set map center to user's current position
+  setUsersPosition(map) {
     let pos;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
@@ -35,13 +35,14 @@ class RouteForm extends React.Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        infoWindow.setPosition(pos);
-        infoWindow.setContent('Location found.');
-        infoWindow.open(map);
         map.setCenter(pos);
       });
     }
+  }
 
+  initMap() {
+    let map = new google.maps.Map(this.refs.map, mapOptions);
+    this.setUsersPosition(map);
     this.directionsDisplay.setMap(map);
     this.map = map;
 
@@ -65,6 +66,7 @@ class RouteForm extends React.Component {
             scale: iconScale,
       }
     });
+
     this.markers.push(marker);
   }
 
@@ -75,9 +77,7 @@ class RouteForm extends React.Component {
   }
 
   calcAndDisplayRoute(directionsService, directionsDisplay) {
-    if (this.markers.length === 1) {
-      return;
-    }
+    if (this.markers.length === 1) return;
 
     let start = this.markers[0].position;
     let end = this.markers[this.markers.length - 1].position;
@@ -86,7 +86,7 @@ class RouteForm extends React.Component {
     for (var i = 1; i < this.markers.length - 1; i++) {
       waypoints.push({
         location: this.markers[i].position,
-        stopover: false
+        stopover: false,
       });
     }
 
@@ -100,18 +100,19 @@ class RouteForm extends React.Component {
     this.directionsService.route(request, (response, status) => {
       if (status == 'OK') {
         this.directionsDisplay.setDirections(response);
+        this.setState({ polyline: response.routes[0].overview_polyline });
       }
     });
   }
 
   render() {
-
+    debugger;
     return (
       <div className='new-map-page'>
         <section className='map-side-bar'>
           <p>Choose map location</p>
         </section>
-        <div id='map-container' ref={ map => this.mapNode = map }></div>
+        <div id='map-container' ref="map"></div>
       </div>
     );
   }
