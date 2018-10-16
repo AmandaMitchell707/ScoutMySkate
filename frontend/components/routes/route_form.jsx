@@ -1,6 +1,6 @@
 import React from 'react';
 
-class NewRouteMap extends React.Component {
+class RouteForm extends React.Component {
   constructor(props) {
     super(props);
     this.map = null;

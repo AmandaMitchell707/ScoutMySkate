@@ -9,7 +9,7 @@ import NavBarContainer from './nav_bar/nav_bar_container';
 import Home from './home/home';
 import SignupContainer from './session/signup_container';
 import LoginContainer from './session/login_container';
-import NewRouteMap from './routes/new_route_map';
+import RouteFormContainer from './routes/route_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -22,7 +22,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <AuthRoute path="/auth/signup" component={SignupContainer} />
       <AuthRoute path="/auth/login" component={LoginContainer} />
-      <ProtectedRoute path="/routes/create" component={NewRouteMap} />
+      <ProtectedRoute path="/routes/create" component={RouteFormContainer} />
       <Redirect to="/"></Redirect>
     </Switch>
 

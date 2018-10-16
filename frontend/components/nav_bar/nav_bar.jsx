@@ -18,7 +18,7 @@ export default ({ currentUser, logout }) => {
       <nav className="nav-bar-inner">
       <div className="left-nav">
         <Link className="logo" to="/">
-          <img className="skate-logo" src="assets/skateboard.png" alt="logo"></img>
+          <img className="skate-logo" src={window.images.logo} alt="logo"></img>
           <h1 className="scout">SCOUT MY SKATE</h1>
         </Link>
       </div>
