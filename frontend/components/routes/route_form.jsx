@@ -1,5 +1,4 @@
 import React from 'react';
-import
 
 const mapOptions = {
   center: { lat: 37.7758, lng: -122.435 },
