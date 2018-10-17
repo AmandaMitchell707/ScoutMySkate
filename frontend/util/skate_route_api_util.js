@@ -1,8 +1,8 @@
-export const createSkateRoute = skateRoute => (
+export const createSkateRoute = skate_route => (
   $.ajax({
     url: '/api/skate_routes',
     method: 'POST',
-    data: { skateRoute },
+    data: { skate_route },
     error: (err) => console.log(err),
   })
 );
@@ -17,25 +17,25 @@ export const fetchAllSkateRoutes = () => (
 
 export const fetchSkateRoute = routeId => (
   $.ajax({
-    url: '/api/skate_routes/${routeId}',
+    url: `/api/skate_routes/${routeId}`,
     method: 'GET',
     error: (err) => console.log(err),
   })
 );
 
 
-export const updateSkateRoute = skateRoute => (
+export const updateSkateRoute = skate_route => (
   $.ajax({
-    url: '/api/skate_routes/${skateRoute.id}',
+    url: `/api/skate_routes/${skate_route.id}`,
     method: 'PATCH',
-    data: { skateRoute },
+    data: { skate_route },
     error: (err) => console.log(err),
   })
 );
 
 export const deleteSkateRoute = routeId => (
   $.ajax({
-    url: '/api/skate_routes/${routeId}',
+    url: `/api/skate_routes/${routeId}`,
     method: 'DELETE',
     error: (err) => console.log(err),
   })

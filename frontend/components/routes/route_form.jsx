@@ -16,7 +16,7 @@ class RouteForm extends React.Component {
       authorId: this.props.currentUser.id,
       distance: 0,
       name: '',
-      city: '',
+      city: 'San Francisco',
       polyline: '',
       location: '',
       searchLocation: null,
@@ -31,6 +31,7 @@ class RouteForm extends React.Component {
     this.addLocationAutocomplete = this.addLocationAutocomplete.bind(this);
     this.onLocationChange = this.onLocationChange.bind(this);
     this.changeMapCenter = this.changeMapCenter.bind(this);
+    this.addMarker = this.addMarker.bind(this);
     this.undoMarker = this.undoMarker.bind(this);
     // this.clearMap = this.clearMap.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
@@ -70,6 +71,10 @@ class RouteForm extends React.Component {
     let iconScale = 4;
     if (this.markers.length > 0) {
       iconScale = 0;
+    } else {
+      this.geocoder.geocode({ 'location': coords }, (results, status) => {
+        this.setState({ city: results[0].formatted_address });
+      });
     }
 
     let marker = new google.maps.Marker({
@@ -154,6 +159,7 @@ class RouteForm extends React.Component {
     const locationInput = document.getElementById('location-form-input');
 
     this.geocoder.geocode({ 'address': this.state.location }, (results, status) => {
+      this.setState({ city: results[0].formatted_address });
       this.map.setCenter(results[0].geometry.location);
       this.map.setZoom(14);
     });
@@ -172,10 +178,7 @@ class RouteForm extends React.Component {
   saveRoute(e) {
     e.preventDefault();
 
-    debugger;
-
     if (this.markers.length > 1) {
-      debugger;
       this.props.createSkateRoute(this.newRouteParams());
     } else {
       alert('You must have at least two points on the map to save a route.');

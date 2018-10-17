@@ -1,1 +1,1 @@
-json.extract! skate_route, :id, :author_id, :markers, :title, :description, :completion_time
+json.extract! skate_route, :id, :author_id, :polyline, :name, :distance, :city
