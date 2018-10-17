@@ -33,6 +33,7 @@ class RouteForm extends React.Component {
     this.changeMapCenter = this.changeMapCenter.bind(this);
     this.undoMarker = this.undoMarker.bind(this);
     // this.clearMap = this.clearMap.bind(this);
+    this.saveRoute = this.saveRoute.bind(this);
   }
 
   componentDidMount() {
@@ -154,18 +155,28 @@ class RouteForm extends React.Component {
 
     this.geocoder.geocode({ 'address': this.state.location }, (results, status) => {
       this.map.setCenter(results[0].geometry.location);
+      this.map.setZoom(14);
     });
   }
 
-  newRoute() {
-    
+  newRouteParams() {
+    return {
+      author_id: this.state.authorId,
+      distance: this.state.distance,
+      name: this.state.name,
+      city: this.state.city,
+      polyline: this.state.polyline,
+    };
   }
 
   saveRoute(e) {
     e.preventDefault();
+
+    debugger;
+
     if (this.markers.length > 1) {
-      const newRoute = this.newRoute();
-      this.props.createSkateRoute(newRoute);
+      debugger;
+      this.props.createSkateRoute(newRouteParams());
     } else {
       alert('You must have at least two points on the map to save a route.');
     }

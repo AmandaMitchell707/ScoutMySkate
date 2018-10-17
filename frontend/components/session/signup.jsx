@@ -55,9 +55,21 @@ class Signup extends React.Component {
     });
   }
 
+  newUserParams() {
+    return {
+      first_name: this.state.firstName,
+      last_name: this.state.lastName,
+      email: this.state.email,
+      password: this.state.password,
+      birth_date: `${this.state.year}-${this.state.month}-${this.state.day}`,
+      gender: this.state.gender,
+      country: this.state.country,
+    };
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createNewUser(this.state())
+    this.props.createNewUser(this.newUserParams())
       .then(() => this.props.history.push('/routes/create'));
   }
 
@@ -77,7 +89,7 @@ class Signup extends React.Component {
     ));
 
     const monthOptions = months.map((month, idx) => (
-      <option value={month} key={idx}>{month}</option>
+      <option value={idx + 1} key={idx}>{month}</option>
     ));
 
     const yearOptions = years.map(year => (

@@ -1,20 +1,24 @@
 .home-container {
   margin: auto;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .home-main {
   text-align: right;
   color: white;
   padding: 18px;
-  padding-right: 65px;
-  width: 1315px;
-  height: 900px;
+  width: 1250px;
+  height: 700px;
   background-image: image-url("street-skater.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
+}
+
+.home-inner {
+  padding-top: 10px;
+  padding-right: 25px;
 }
 
 .title > * {
@@ -45,12 +49,14 @@
   padding-top: 20px;
   padding-bottom: 20px;
   margin-right: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: 1000;
 }
 
 @media only screen and (min-width: 768px) {
   .home-main {
     padding: 36px;
-    padding-right: 65px;
   }
 }
 
@@ -60,8 +66,10 @@
   }
 }
 
-@media (max-width: 1315px) {
+@media (max-width: 1250px) {
   .home-main {
     width: 100vw;
+    padding: 0;
+    margin: 0;
   }
 }
