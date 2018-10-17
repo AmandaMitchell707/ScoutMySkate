@@ -63,7 +63,8 @@ class Signup extends React.Component {
 
   handleDemoLogin(e) {
     e.preventDefault();
-    this.props.loginDemoUser();
+    this.props.loginDemoUser()
+      .then(() => this.props.history.push('/routes/create'));
   }
 
   render() {

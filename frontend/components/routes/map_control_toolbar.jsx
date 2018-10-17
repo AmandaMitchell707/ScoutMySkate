@@ -1,5 +1,4 @@
 import React from 'react';
-import MarkerManager from '../../util/marker_manager';
 
 class MapControlToolbar extends React.Component {
   constructor(props) {
@@ -19,10 +18,6 @@ class MapControlToolbar extends React.Component {
           </div>
         </div>
         <div className="toolbar-buttons">
-          <div className="top-row">
-          </div>
-          <div className="bottom-row">
-          </div>
         </div>
       </div>
     );

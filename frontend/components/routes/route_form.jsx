@@ -1,4 +1,5 @@
 import React from 'react';
+import MapControlToolbar from './map_control_toolbar';
 
 const mapOptions = {
   center: { lat: 37.7758, lng: -122.435 },
@@ -12,14 +13,25 @@ class RouteForm extends React.Component {
     super(props);
 
     this.state = {
+      authorId: this.props.currentUser.id,
+      distance: 0,
+      elevation: 0,
       name: '',
+      city: '',
       polyline: '',
+      location: '',
+      searchLocation: null,
     };
 
     this.map = null;
     this.markers = [];
+    this.autocomplete = null;
     this.directionsService = new google.maps.DirectionsService();
     this.directionsDisplay = new google.maps.DirectionsRenderer({ preserveViewport: true });
+    this.geocoder = new google.maps.Geocoder();
+    this.addLocationAutocomplete = this.addLocationAutocomplete.bind(this);
+    this.onLocationChange = this.onLocationChange.bind(this);
+    this.changeMapCenter = this.changeMapCenter.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +61,7 @@ class RouteForm extends React.Component {
       this.addMarker({ lat: event.latLng.lat(), lng: event.latLng.lng() });
       this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
     });
+    this.addLocationAutocomplete();
   }
 
   addMarker(coords) {
@@ -69,11 +82,17 @@ class RouteForm extends React.Component {
     this.markers.push(marker);
   }
 
-  clearMap(e) {
-    e.preventDefault();
-    this.markers = [];
-    this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
-  }
+  // undoMarker(e) {
+  //   e.preventDefault();
+  //   this.markers.pop();
+  //   this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
+  // }
+  //
+  // clearMap(e) {
+  //   e.preventDefault();
+  //   this.markers = [];
+  //   this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
+  // }
 
   calcAndDisplayRoute(directionsService, directionsDisplay) {
     if (this.markers.length === 1) return;
@@ -104,14 +123,67 @@ class RouteForm extends React.Component {
     });
   }
 
+  update(property) {
+    return e => this.setState({
+      [property]: e.target.value,
+    });
+  }
+
+  addLocationAutocomplete() {
+    const locationInput = document.getElementById('location-form-input');
+    this.autocomplete = new google.maps.places.Autocomplete(locationInput);
+    this.autocomplete.addListener('place_changed', this.onLocationChange);
+  }
+
+  onLocationChange() {
+    // debugger;
+    let place = this.autocomplete.getPlace();
+    if (place.geometry) {
+      // debugger;
+      this.setState({ searchLocation: place.geometry.location });
+    } else {
+      const locationInput = document.getElementById('location-form-input');
+      locationInput.value = '';
+      alert("There was a problem locating the address provided. Please check that the address is valid and try again.");
+    }
+  }
+
+  changeMapCenter(e) {
+    e.preventDefault();
+    const locationInput = document.getElementById('location-form-input');
+
+    this.geocoder.geocode({ 'address': this.state.location }, (results, status) => {
+      this.map.setCenter(results[0].geometry.location);
+    });
+  }
+
+  saveRoute(e) {
+    e.preventDefault();
+
+  }
+
   render() {
-    debugger;
     return (
       <div className='new-map-page'>
         <section className='map-side-bar'>
-          <p>Choose map location</p>
+          <form className="location-form" onSubmit={this.changeMapCenter}>
+            <p>Choose map location</p>
+            <input
+              type="search"
+              className="location-form-input"
+              id="location-form-input"
+              value={this.state.location}
+              onChange={this.update('location')}
+              placeholder="Address, City or Zip"
+            />
+            <button
+              type="submit"
+              className="location-form-submit"
+            >SEARCH</button>
+          </form>
         </section>
         <div id='map-container' ref="map"></div>
+        <MapControlToolbar markers={this.markers}/>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 class SkateRoute < ApplicationRecord
-  validates :author_id, :markers, :title, presence:true
+  validates :polyline, :distance, :elevation, :name, :city, presence: true
 
   belongs_to :author,
     foreign_key: :author_id,
