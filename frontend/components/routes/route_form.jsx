@@ -32,6 +32,8 @@ class RouteForm extends React.Component {
     this.addLocationAutocomplete = this.addLocationAutocomplete.bind(this);
     this.onLocationChange = this.onLocationChange.bind(this);
     this.changeMapCenter = this.changeMapCenter.bind(this);
+    this.undoMarker = this.undoMarker.bind(this);
+    // this.clearMap = this.clearMap.bind(this);
   }
 
   componentDidMount() {
@@ -82,12 +84,12 @@ class RouteForm extends React.Component {
     this.markers.push(marker);
   }
 
-  // undoMarker(e) {
-  //   e.preventDefault();
-  //   this.markers.pop();
-  //   this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
-  // }
-  //
+  undoMarker(e) {
+    e.preventDefault();
+    this.markers.pop();
+    this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
+  }
+
   // clearMap(e) {
   //   e.preventDefault();
   //   this.markers = [];
@@ -140,7 +142,8 @@ class RouteForm extends React.Component {
     let place = this.autocomplete.getPlace();
     if (place.geometry) {
       // debugger;
-      this.setState({ searchLocation: place.geometry.location });
+      this.setState({ location: place.formatted_address });
+
     } else {
       const locationInput = document.getElementById('location-form-input');
       locationInput.value = '';
@@ -183,7 +186,10 @@ class RouteForm extends React.Component {
           </form>
         </section>
         <div id='map-container' ref="map"></div>
-        <MapControlToolbar markers={this.markers}/>
+        <MapControlToolbar
+          markers={this.markers}
+          undoMarker={this.undoMarker}
+        />
       </div>
     );
   }

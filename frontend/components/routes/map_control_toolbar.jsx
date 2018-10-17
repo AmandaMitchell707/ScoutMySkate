@@ -18,6 +18,7 @@ class MapControlToolbar extends React.Component {
           </div>
         </div>
         <div className="toolbar-buttons">
+          <button onClick={this.props.undoMarker}>Undo</button>
         </div>
       </div>
     );
