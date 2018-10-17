@@ -176,7 +176,7 @@ class RouteForm extends React.Component {
 
     if (this.markers.length > 1) {
       debugger;
-      this.props.createSkateRoute(newRouteParams());
+      this.props.createSkateRoute(this.newRouteParams());
     } else {
       alert('You must have at least two points on the map to save a route.');
     }
