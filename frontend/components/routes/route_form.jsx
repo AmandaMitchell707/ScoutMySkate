@@ -15,7 +15,6 @@ class RouteForm extends React.Component {
     this.state = {
       authorId: this.props.currentUser.id,
       distance: 0,
-      elevation: 0,
       name: '',
       city: '',
       polyline: '',
@@ -138,16 +137,14 @@ class RouteForm extends React.Component {
   }
 
   onLocationChange() {
-    // debugger;
     let place = this.autocomplete.getPlace();
     if (place.geometry) {
-      // debugger;
       this.setState({ location: place.formatted_address });
 
     } else {
       const locationInput = document.getElementById('location-form-input');
       locationInput.value = '';
-      alert("There was a problem locating the address provided. Please check that the address is valid and try again.");
+      alert('There was a problem locating the address provided. Please check that the address is valid and try again.');
     }
   }
 
@@ -160,9 +157,18 @@ class RouteForm extends React.Component {
     });
   }
 
+  newRoute() {
+    
+  }
+
   saveRoute(e) {
     e.preventDefault();
-
+    if (this.markers.length > 1) {
+      const newRoute = this.newRoute();
+      this.props.createSkateRoute(newRoute);
+    } else {
+      alert('You must have at least two points on the map to save a route.');
+    }
   }
 
   render() {
@@ -184,11 +190,28 @@ class RouteForm extends React.Component {
               className="location-form-submit"
             >SEARCH</button>
           </form>
+          <br />
+          <form className="new-route-form" onSubmit={this.saveRoute}>
+            <input
+              type="text"
+              className="name-input"
+              id="location-form-input"
+              value={this.state.name}
+              onChange={this.update('name')}
+              placeholder="Name this map"
+            />
+            <button
+              type="submit"
+              className="new-route-submit"
+            >SAVE ROUTE</button>
+          </form>
         </section>
+
         <div id='map-container' ref="map"></div>
         <MapControlToolbar
           markers={this.markers}
           undoMarker={this.undoMarker}
+          distance={this.state.distance}
         />
       </div>
     );

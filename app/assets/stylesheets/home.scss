@@ -9,6 +9,7 @@
   text-align: right;
   color: white;
   padding: 18px;
+  padding-right: 65px;
   width: 1315px;
   height: 900px;
   background-image: image-url("street-skater.jpg");
@@ -49,6 +50,7 @@
 @media only screen and (min-width: 768px) {
   .home-main {
     padding: 36px;
+    padding-right: 65px;
   }
 }
 

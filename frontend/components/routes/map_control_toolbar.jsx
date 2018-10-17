@@ -8,7 +8,7 @@ class MapControlToolbar extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className="map-control-toolbar">
         <div className="toolbar-top">
           <div className="distance">
             <label>Distance</label>
