@@ -132,7 +132,7 @@ class RouteForm extends React.Component {
         response.routes[0].legs.forEach((leg) => distanceInMeters += leg.distance.value);
 
         // let distanceInMeters = google.maps.geometry.spherical.computeLength(request);
-        this.state.distance = Math.round(100 - (distanceInMeters / 1609.344) * 100);
+        this.state.distance = (distanceInMeters / 1609.344).toFixed(2);
         debugger;
         this.setState({ polyline: response.routes[0].overview_polyline });
       }

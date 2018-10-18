@@ -8,7 +8,14 @@ class RouteShow extends React.Component {
     this.map = null;
     this.markers = [];
     this.directionsService = new google.maps.DirectionsService();
-    this.directionsDisplay = new google.maps.DirectionsRenderer();
+    this.directionsDisplay = new google.maps.DirectionsRenderer({
+      polylineOptions: {
+        strokeColor: 'red',
+        strokeOpacity: 0.5,
+        strokeWeight: 4,
+      },
+      suppressMarkers: true,
+    });
   }
 
   componentDidMount() {
