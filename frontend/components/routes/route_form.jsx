@@ -33,7 +33,7 @@ class RouteForm extends React.Component {
     this.changeMapCenter = this.changeMapCenter.bind(this);
     this.addMarker = this.addMarker.bind(this);
     this.undoMarker = this.undoMarker.bind(this);
-    // this.clearMap = this.clearMap.bind(this);
+    this.clearMap = this.clearMap.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
   }
 
@@ -95,11 +95,13 @@ class RouteForm extends React.Component {
     this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
   }
 
-  // clearMap(e) {
-  //   e.preventDefault();
-  //   this.markers = [];
-  //   this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
-  // }
+  clearMap(e) {
+    e.preventDefault();
+    this.markers = [];
+
+    debugger;
+    this.map.data.forEach(this.map.data.remove);
+  }
 
   calcAndDisplayRoute(directionsService, directionsDisplay) {
     if (this.markers.length === 1) return;
@@ -108,7 +110,7 @@ class RouteForm extends React.Component {
     let end = this.markers[this.markers.length - 1].position;
     let waypoints = [];
 
-    for (var i = 1; i < this.markers.length - 1; i++) {
+    for (let i = 1; i < this.markers.length - 1; i++) {
       waypoints.push({
         location: this.markers[i].position,
         stopover: false,
@@ -125,6 +127,13 @@ class RouteForm extends React.Component {
     this.directionsService.route(request, (response, status) => {
       if (status == 'OK') {
         this.directionsDisplay.setDirections(response);
+
+        let distanceInMeters = 0;
+        response.routes[0].legs.forEach((leg) => distanceInMeters += leg.distance.value);
+
+        // let distanceInMeters = google.maps.geometry.spherical.computeLength(request);
+        this.state.distance = Math.round(100 - (distanceInMeters / 1609.344) * 100);
+        debugger;
         this.setState({ polyline: response.routes[0].overview_polyline });
       }
     });
@@ -179,8 +188,8 @@ class RouteForm extends React.Component {
     e.preventDefault();
 
     if (this.markers.length > 1) {
-      this.props.createSkateRoute(this.newRouteParams()
-        .then(data => this.props.history.push(`/routes/view/${data.skateRoute.id}`)));
+      this.props.createSkateRoute(this.newRouteParams())
+        .then(data => this.props.history.push(`/routes/view/${data.skateRoute.id}`));
     } else {
       alert('You must have at least two points on the map to save a route.');
     }
@@ -188,23 +197,29 @@ class RouteForm extends React.Component {
 
   render() {
     return (
-      <div className='new-map-page'>
-        <section className='map-side-bar'>
-          <form className="location-form" onSubmit={this.changeMapCenter}>
-            <p>Choose map location</p>
-            <input
-              type="search"
-              className="location-form-input"
-              id="location-form-input"
-              value={this.state.location}
-              onChange={this.update('location')}
-              placeholder="Address, City or Zip"
-            />
-            <button
-              type="submit"
-              className="location-form-submit"
-            >SEARCH</button>
-          </form>
+      <div className='map-page'>
+        <div className='map-side-bar'>
+          <section className='left-pervasive'>
+            <form className="location-search-container" onSubmit={this.changeMapCenter}>
+              <label>Choose map location
+                <div>
+                  <input
+                    type="search"
+                    className="location-form-input"
+                    id="location-form-input"
+                    value={this.state.location}
+                    onChange={this.update('location')}
+                    placeholder="Address, City or Zip"
+                  />
+                <span className="mapping-api-sprite sprite-geolocate" alt="Target reticle"></span>
+                </div>
+              </label>
+              <button
+                type="submit"
+                className="location-form-submit"
+              >SEARCH</button>
+            </form>
+          </section>
           <br />
           <form className="new-route-form" onSubmit={this.saveRoute}>
             <input
@@ -220,12 +235,13 @@ class RouteForm extends React.Component {
               className="new-route-submit"
             >SAVE ROUTE</button>
           </form>
-        </section>
+        </div>
 
-        <div id='map-container' ref="map"></div>
+        <div id='form-map-container' ref="map"></div>
         <MapControlToolbar
           markers={this.markers}
           undoMarker={this.undoMarker}
+          clearMap={this.clearMap}
           distance={this.state.distance}
         />
       </div>

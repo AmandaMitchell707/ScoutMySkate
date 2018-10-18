@@ -10,7 +10,10 @@ const skateRoutesReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_SKATE_ROUTE:
-      return merge({}, state, { [action.skateRoute.id]: action.skateRoute });
+      let newState = merge({}, state);
+      newState[action.skateRoute.id] = action.skateRoute;
+      return newState;
+      // return merge({}, state, { [action.skateRoute.id]: action.skateRoute });
     case RECEIVE_SKATE_ROUTES:
       return action.skateRoutes;
     default:

@@ -1,0 +1,48 @@
+// Place all the styles related to the SkateRoutes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.left-pervasive {
+  height: 94px;
+  width: 100%;
+}
+
+.location-search-container {
+  overflow: visible;
+  white-space: nowrap;
+  padding: 8px 12px;
+  margin-bottom: 0;
+  border: 1px solid rgb(102, 102, 102);
+
+  label {
+    line-height: 18px;
+    margin-bottom: 5px;
+  }
+
+  .location-form-input {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    height: 28px;
+    width: 145px;
+    line-height: 16px;
+    min-width: 40px;
+    padding-left: 6px;
+    border-radius: 4px;
+    font-family: "Open Sans", sans-serif;
+  }
+}
+
+
+#form-map-container {
+  height: 100%;
+  width: calc(100% - 341px);
+}
+
+.map-page {
+  height: calc(100% - 71px);
+  display: flex;
+}
+
+.map-side-bar {
+  width: 340px;
+}
