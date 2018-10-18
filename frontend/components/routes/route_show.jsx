@@ -2,6 +2,10 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 class RouteShow extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
   componentDidMount() {
     this.props.fetchSkateRoute(this.props.match.params.routeId);
   }
@@ -13,7 +17,7 @@ class RouteShow extends React.Component {
   }
 
   render() {
-
+    debugger;
     return (
       <section className="route-show">
         <h2>{skateRoute.name}</h2>

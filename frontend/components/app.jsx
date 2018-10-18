@@ -10,6 +10,7 @@ import Home from './home/home';
 import SignupContainer from './session/signup_container';
 import LoginContainer from './session/login_container';
 import RouteFormContainer from './routes/route_form_container';
+import RouteShowContainer from './routes/route_show_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
@@ -23,6 +24,7 @@ const App = () => (
       <AuthRoute path="/auth/signup" component={SignupContainer} />
       <AuthRoute path="/auth/login" component={LoginContainer} />
       <ProtectedRoute path="/routes/create" component={RouteFormContainer} />
+      <Route path="/routes/view/:routeId" component={RouteShowContainer} />
       <Redirect to="/"></Redirect>
     </Switch>
 

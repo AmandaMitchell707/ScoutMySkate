@@ -5,10 +5,13 @@ import RouteShow from './route_show';
 
 const mapStateToProps = (state, ownProps) => {
   const skateRoute = state.entities.skateRoutes[ownProps.match.params.routeId];
-  return {
-    skateRoute,
-    author: state.entities.users[skateRoute.authorId],
-  };
+
+  if (!skateRoute) {
+    return { skateRoute };
+  }
+
+  const author = state.entities.users[skateRoute.authorId];
+  return { skateRoute, author };
 };
 
 const mapDispatchToProps = dispatch => ({
