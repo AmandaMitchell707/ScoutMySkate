@@ -38,7 +38,7 @@ user3 = User.create!(
   password: "starwars"
 )
 
-User.create!(
+user4 = User.create!(
   first_name: "Miracle",
   last_name: "Whips",
   email: "skater@montreal.com",
@@ -48,7 +48,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user5 = User.create!(
   first_name: "Brawn",
   last_name: "Swanson",
   email: "skater@rosecity.com",
@@ -58,7 +58,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user6 = User.create!(
   first_name: "Freight",
   last_name: "Train",
   email: "skater@texas.com",
@@ -68,7 +68,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user7 = User.create!(
   first_name: "Miss Tea",
   last_name: "Maven",
   email: "skater2@gotham.com",
@@ -78,7 +78,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user8 = User.create!(
   first_name: "Optimus",
   last_name: "Grime",
   email: "skater@glasgow.com",
@@ -88,7 +88,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user9 = User.create!(
   first_name: "Metal",
   last_name: "Monk",
   email: "me@me.com",
@@ -98,7 +98,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user10 = User.create!(
   first_name: "V",
   last_name: "Diva",
   email: "skater3@gotham.com",
