@@ -43,6 +43,9 @@
   font-family: "Open Sans", sans-serif;
   line-height: 18px;
   font-stretch: 100%;
+  label, h2 {
+    color: inherit;
+  }
 }
 
 .toolbar-buttons {

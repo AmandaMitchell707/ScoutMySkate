@@ -5,16 +5,17 @@ import { Route } from 'react-router-dom';
 class RouteShow extends React.Component {
   constructor(props) {
     super(props);
+
     this.map = null;
     this.markers = [];
     this.directionsService = new google.maps.DirectionsService();
     this.directionsDisplay = new google.maps.DirectionsRenderer({
+      suppressMarkers: true,
       polylineOptions: {
         strokeColor: 'red',
         strokeOpacity: 0.5,
         strokeWeight: 4,
       },
-      suppressMarkers: true,
     });
   }
 
@@ -38,17 +39,25 @@ class RouteShow extends React.Component {
   initMap() {
     let route = google.maps.geometry.encoding.decodePath(this.props.skateRoute.polyline);
     let distanceInMeters = google.maps.geometry.spherical.computeLength(route);
-    this.distanceInMiles = Math.round(100 - (distanceInMeters / 1609.344) * 100);
-    let mapCenter = { lat: route[0].lat(), lng: route[0].lng() };
+    this.distanceInMiles = (distanceInMeters / 1609.344).toFixed(2);
+
     const mapOptions = {
-      center: mapCenter,
-      zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
-    // debugger;
+
     let map = new google.maps.Map(this.refs.map, mapOptions);
     this.directionsDisplay.setMap(map);
     this.createRouteMarkers(route, map);
+
+    // const newPolyline = new google.maps.Polyline({
+    //   path: route,
+    //   strokeColor: 'red',
+    //   strokeOpacity: 0.5,
+    //   strokeWeight: 4,
+    // });
+    //
+    // newPolyline.setMap(map);
+    // debugger;
     this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
     this.map = map;
   }
@@ -70,7 +79,7 @@ class RouteShow extends React.Component {
                 path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
                 scale: iconScale,
           }
-        });
+      });
 
       this.markers.push(marker);
     });
@@ -103,9 +112,7 @@ class RouteShow extends React.Component {
   }
 
   render() {
-    if (!this.props.skateRoute) {
-      return null;
-    }
+    if (!this.props.skateRoute) return null;
 
     return (
       <div className="map-page">

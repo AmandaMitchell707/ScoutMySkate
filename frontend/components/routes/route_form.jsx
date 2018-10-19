@@ -77,10 +77,13 @@ class RouteForm extends React.Component {
       });
     }
 
+    // let skateIcon = image-url("skate-icon.jpg");
+
     let marker = new google.maps.Marker({
       position: coords,
       map: this.map,
       icon: {
+            // path: skateIcon,
             path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
             scale: iconScale,
       }
@@ -98,9 +101,8 @@ class RouteForm extends React.Component {
   clearMap(e) {
     e.preventDefault();
     this.markers = [];
-
     debugger;
-    this.map.data.forEach(this.map.data.remove);
+    // this.map.data.forEach(datum => datum.remove);
   }
 
   calcAndDisplayRoute(directionsService, directionsDisplay) {
@@ -131,9 +133,7 @@ class RouteForm extends React.Component {
         let distanceInMeters = 0;
         response.routes[0].legs.forEach((leg) => distanceInMeters += leg.distance.value);
 
-        // let distanceInMeters = google.maps.geometry.spherical.computeLength(request);
-        this.state.distance = (distanceInMeters / 1609.344).toFixed(2);
-        debugger;
+        this.setState({ distance: (distanceInMeters / 1609.344).toFixed(2) });
         this.setState({ polyline: response.routes[0].overview_polyline });
       }
     });
@@ -216,7 +216,7 @@ class RouteForm extends React.Component {
               </label>
               <button
                 type="submit"
-                className="location-form-submit"
+                className="location-search"
               >SEARCH</button>
             </form>
           </section>

@@ -11,7 +11,7 @@ class MapControlToolbar extends React.Component {
       <div className="map-control-toolbar">
         <div className="toolbar-top">
           <div className="distance">
-            <label>Distance</label>
+            <label>DISTANCE</label>
             <h2 className="distance-display">
               {this.props.distance} mi
             </h2>
