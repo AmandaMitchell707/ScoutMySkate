@@ -8,7 +8,7 @@
 
 User.delete_all
 
-User.create!(
+user1 = User.create!(
   first_name: "Bonnie",
   last_name: "Thunders",
   email: "skater1@gotham.com",
@@ -18,7 +18,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user2 = User.create!(
   first_name: "Lady",
   last_name: "Trample",
   email: "skater@victorian.com",
@@ -28,7 +28,7 @@ User.create!(
   password: "starwars"
 )
 
-User.create!(
+user3 = User.create!(
   first_name: "Scald",
   last_name: "Eagle",
   email: "skater@denver.com",
@@ -111,7 +111,7 @@ User.create!(
 SkateRoute.delete_all
 
 SkateRoute.create!(
-  author_id: 49,
+  author_id: user1.id,
   polyline: "wsueFtnajVjBUHlAd@bH|@nNlArR\\jFHpALCBDBDRCh@GdBSrIeAJA@PH|@XhE",
   distance: 0.81,
   name: "App Academy Skate",
@@ -119,7 +119,7 @@ SkateRoute.create!(
 )
 
 SkateRoute.create!(
-  author_id: 49,
+  author_id: user1.id,
   polyline: "_}seFppbjVWgEOEmBTmAPy@JoHz@}Db@aOjBz@nMzBl^`AM",
   distance: 0.81,
   name: "Chinatown Cruise",
@@ -127,7 +127,7 @@ SkateRoute.create!(
 )
 
 SkateRoute.create!(
-  author_id: 49,
+  author_id: user1.id,
   polyline: "mkweFx_cjVFYdAeDd@wANUZm@Pc@~B_GfBiEhBuChBqCnCgE`@i@^]dHgGvIqHzCiCb@[nBcBjAcA`EgDdFgExCaCEOVO",
   distance: 1.17,
   name: "Sweet Views of the Bay",
