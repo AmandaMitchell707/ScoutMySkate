@@ -40,5 +40,4 @@ class User < ApplicationRecord
   has_many :skate_routes,
     foreign_key: :author_id,
     class_name: :SkateRoute
-
 end

@@ -107,3 +107,29 @@ User.create!(
   country: "United States",
   password: "starwars"
 )
+
+SkateRoute.delete_all
+
+SkateRoute.create!(
+  author_id: 49,
+  polyline: "wsueFtnajVjBUHlAd@bH|@nNlArR\\jFHpALCBDBDRCh@GdBSrIeAJA@PH|@XhE",
+  distance: 0.81,
+  name: "App Academy Skate",
+  city: "855 Battery St, San Francisco, CA 94111, USA",
+)
+
+SkateRoute.create!(
+  author_id: 49,
+  polyline: "_}seFppbjVWgEOEmBTmAPy@JoHz@}Db@aOjBz@nMzBl^`AM",
+  distance: 0.81,
+  name: "Chinatown Cruise",
+  city: "564 Bush St, San Francisco, CA 94108, USA",
+)
+
+SkateRoute.create!(
+  author_id: 49,
+  polyline: "mkweFx_cjVFYdAeDd@wANUZm@Pc@~B_GfBiEhBuChBqCnCgE`@i@^]dHgGvIqHzCiCb@[nBcBjAcA`EgDdFgExCaCEOVO",
+  distance: 1.17,
+  name: "Sweet Views of the Bay",
+  city: "1 Beach St, San Francisco, CA 94133, USA",
+)
