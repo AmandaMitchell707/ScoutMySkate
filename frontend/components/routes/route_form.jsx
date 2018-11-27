@@ -2,6 +2,7 @@ import React from 'react';
 import MapControlToolbar from './map_control_toolbar';
 
 const mapOptions = {
+  // default map center is San Francisco, CA
   center: { lat: 37.7758, lng: -122.435 },
   zoom: 15,
   mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -177,6 +178,16 @@ class RouteForm extends React.Component {
       this.setState({ city: results[0].formatted_address });
       this.map.setCenter(results[0].geometry.location);
       this.map.setZoom(14);
+    });
+  }
+
+  encodeMarkers() {
+    let markerString = '';
+    this.markers.forEach(marker => {
+      let latitude = marker.getPosition().lat();
+      let longitude = marker.getPosition().lng();
+      markerString += `${latitude},${longitude}`;
+      // console.log(markerString);
     });
   }
 
