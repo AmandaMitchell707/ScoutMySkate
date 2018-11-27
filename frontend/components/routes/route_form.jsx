@@ -68,10 +68,8 @@ class RouteForm extends React.Component {
   }
 
   addMarker(coords) {
-    let iconScale = 4;
-    if (this.markers.length > 0) {
-      iconScale = 0;
-    } else {
+    let iconScale = 0;
+    if (this.markers.length === 0) {
       this.geocoder.geocode({ 'location': coords }, (results, status) => {
         this.setState({ city: results[0].formatted_address });
       });
@@ -95,18 +93,28 @@ class RouteForm extends React.Component {
   undoMarker(e) {
     e.preventDefault();
     this.markers.pop();
-    this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
+
+    if (this.markers.length < 2) {
+      this.directionsDisplay.setMap(null);
+      debugger;
+    } else {
+      this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
+    }
   }
 
   clearMap(e) {
     e.preventDefault();
     this.markers = [];
-    debugger;
-    // this.map.data.forEach(datum => datum.remove);
+    this.directionsDisplay.setMap(null);
+    this.directionsDisplay = null;
+    this.setState({ distance : 0 });
+
+    this.directionsDisplay = new google.maps.DirectionsRenderer({ preserveViewport: true });
+    this.directionsDisplay.setMap(this.map);
   }
 
   calcAndDisplayRoute(directionsService, directionsDisplay) {
-    if (this.markers.length === 1) return;
+    // if (this.markers.length <= 1) return;
 
     let start = this.markers[0].position;
     let end = this.markers[this.markers.length - 1].position;
