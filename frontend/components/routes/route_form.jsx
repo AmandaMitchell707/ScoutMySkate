@@ -33,6 +33,7 @@ class RouteForm extends React.Component {
     this.onLocationChange = this.onLocationChange.bind(this);
     this.changeMapCenter = this.changeMapCenter.bind(this);
     this.addMarker = this.addMarker.bind(this);
+    this.encodeMarkers = this.encodeMarkers.bind(this);
     this.undoMarker = this.undoMarker.bind(this);
     this.clearMap = this.clearMap.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
@@ -186,9 +187,10 @@ class RouteForm extends React.Component {
     this.markers.forEach(marker => {
       let latitude = marker.getPosition().lat();
       let longitude = marker.getPosition().lng();
-      markerString += `${latitude},${longitude}`;
-      // console.log(markerString);
+      markerString += `${latitude},${longitude},`;
     });
+
+    return markerString.slice(0, -1);
   }
 
   newRouteParams() {
@@ -198,6 +200,7 @@ class RouteForm extends React.Component {
       name: this.state.name,
       city: this.state.city,
       polyline: this.state.polyline,
+      encoded_markers: this.encodeMarkers(),
     };
   }
 
