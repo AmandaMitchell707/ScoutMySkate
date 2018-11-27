@@ -94,16 +94,14 @@ class RouteForm extends React.Component {
     e.preventDefault();
     this.markers.pop();
 
-    if (this.markers.length < 2) {
-      this.directionsDisplay.setMap(null);
-      debugger;
+    if (this.markers.length === 0) {
+      this.clearMap();
     } else {
       this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
     }
   }
 
-  clearMap(e) {
-    e.preventDefault();
+  clearMap() {
     this.markers = [];
     this.directionsDisplay.setMap(null);
     this.directionsDisplay = null;
