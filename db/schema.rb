@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_205202) do
+ActiveRecord::Schema.define(version: 2018_11_27_222726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_205202) do
     t.float "distance", null: false
     t.string "name", null: false
     t.string "city", null: false
+    t.text "encoded_markers"
     t.index ["author_id"], name: "index_skate_routes_on_author_id"
   end
 
