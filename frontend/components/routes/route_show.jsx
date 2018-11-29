@@ -28,6 +28,7 @@ class RouteShow extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.skateRoute) {
+      this.decodeMarkers();
       this.initMap();
     }
 
@@ -37,9 +38,7 @@ class RouteShow extends React.Component {
   }
 
   initMap() {
-    let route = google.maps.geometry.encoding.decodePath(this.props.skateRoute.polyline);
-    let distanceInMeters = google.maps.geometry.spherical.computeLength(route);
-    this.distanceInMiles = (distanceInMeters / 1609.344).toFixed(2);
+    this.distanceInMiles = this.props.skateRoute.distance;
 
     const mapOptions = {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -47,42 +46,26 @@ class RouteShow extends React.Component {
 
     let map = new google.maps.Map(this.refs.map, mapOptions);
     this.directionsDisplay.setMap(map);
-    this.createRouteMarkers(route, map);
-
-    // const newPolyline = new google.maps.Polyline({
-    //   path: route,
-    //   strokeColor: 'red',
-    //   strokeOpacity: 0.5,
-    //   strokeWeight: 4,
-    // });
-    //
-    // newPolyline.setMap(map);
-    // debugger;
     this.calcAndDisplayRoute(this.directionsService, this.directionsDisplay);
     this.map = map;
   }
 
-  createRouteMarkers(route, map) {
-    route.map((el, idx) => {
-      let lat = el.lat();
-      let lng = el.lng();
+  decodeMarkers() {
+    let coordinateList = this.props.skateRoute.encodedMarkers.split(',').map(Number);
 
-      let iconScale = 4;
-      if (idx !== 0 && idx < route.length - 1) {
-        iconScale = 0;
-      }
-
+    for (let i = 0; i < coordinateList.length; i += 2) {
+      let coords = { lat: coordinateList[i], lng: coordinateList[i + 1] };
       let marker = new google.maps.Marker({
-          position: { lat: lat, lng: lng },
-          map: map,
-          icon: {
-                path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
-                scale: iconScale,
-          }
+        position: coords,
+        map: this.map,
+        icon: {
+          path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+          scale: 0,
+        },
       });
 
       this.markers.push(marker);
-    });
+    }
   }
 
   calcAndDisplayRoute(directionsService, directionsDisplay) {
