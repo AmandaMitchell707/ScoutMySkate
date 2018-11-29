@@ -38,8 +38,6 @@ class RouteShow extends React.Component {
   }
 
   initMap() {
-    this.distanceInMiles = this.props.skateRoute.distance;
-
     const mapOptions = {
       mapTypeId: google.maps.MapTypeId.ROADMAP,
     };
@@ -104,7 +102,7 @@ class RouteShow extends React.Component {
           <ul className="route-details">
             <li>BEGINS AT: {this.props.skateRoute.city}</li>
             <li>CREATED BY: {this.props.author.firstName} {this.props.author.lastName}</li>
-            <li>DISTANCE: {this.distanceInMiles} miles</li>
+            <li>DISTANCE: {this.props.skateRoute.distance} miles</li>
           </ul>
           <div id='show-map-container' ref="map" />
         </section>
