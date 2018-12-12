@@ -18,7 +18,7 @@ class RouteForm extends React.Component {
       distance: 0,
       name: '',
       city: 'San Francisco',
-      polyline: '',
+      // polyline: '',
       location: '',
       searchLocation: null,
     };
@@ -142,7 +142,7 @@ class RouteForm extends React.Component {
         response.routes[0].legs.forEach((leg) => distanceInMeters += leg.distance.value);
 
         this.setState({ distance: (distanceInMeters / 1609.344).toFixed(2) });
-        this.setState({ polyline: response.routes[0].overview_polyline });
+        // this.setState({ polyline: response.routes[0].overview_polyline });
       }
     });
   }
@@ -199,7 +199,7 @@ class RouteForm extends React.Component {
       distance: this.state.distance,
       name: this.state.name,
       city: this.state.city,
-      polyline: this.state.polyline,
+      // polyline: this.state.polyline,
       encoded_markers: this.encodeMarkers(),
     };
   }
