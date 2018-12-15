@@ -1,6 +1,6 @@
 class Api::SkateRoutesController < ApplicationController
   def index
-    @skate_routes = SkateRoute.all
+    @skate_routes = SkateRoute.where(author_id: current_user.id)
   end
 
   def show
