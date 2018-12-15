@@ -4,7 +4,7 @@ import RouteIndex from './route_index';
 import { fetchAllSkateRoutes } from '../../actions/skate_route_actions';
 
 const mapStateToProps = state => ({
-
+  skateRoutes: state.entities.skateRoutes
 });
 
 const mapDispatchToProps = dispatch => ({
