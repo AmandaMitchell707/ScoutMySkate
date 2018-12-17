@@ -112,24 +112,24 @@ SkateRoute.delete_all
 
 SkateRoute.create!(
   author_id: user1.id,
-  polyline: "wsueFtnajVjBUHlAd@bH|@nNlArR\\jFHpALCBDBDRCh@GdBSrIeAJA@PH|@XhE",
-  distance: 0.81,
-  name: "App Academy Skate",
-  city: "855 Battery St, San Francisco, CA 94111, USA",
+  distance: 2.31,
+  name: "Embarcadero Skate",
+  city: "2001 The Embarcadero, San Francisco, CA 94133, USA",
+  encoded_markers: "37.80749981626116,-122.40784103038823,37.80193896860599,-122.39960128429448,37.7805846854416,-122.38851453224834",
 )
 
 SkateRoute.create!(
   author_id: user1.id,
-  polyline: "_}seFppbjVWgEOEmBTmAPy@JoHz@}Db@aOjBz@nMzBl^`AM",
-  distance: 0.81,
+  distance: 2.81,
   name: "Chinatown Cruise",
-  city: "564 Bush St, San Francisco, CA 94108, USA",
+  city: "1143 Pacific Ave, San Francisco, CA 94133, USA",
+  encoded_markers: "37.79590518729613,-122.41411054533216,37.79787203705084,-122.40544164579603,37.798719800966964,-122.39999139707777,37.79034346668747,-122.39840352934095,37.7920730709989,-122.4158271591017",
 )
 
 SkateRoute.create!(
   author_id: user1.id,
-  polyline: "mkweFx_cjVFYdAeDd@wANUZm@Pc@~B_GfBiEhBuChBqCnCgE`@i@^]dHgGvIqHzCiCb@[nBcBjAcA`EgDdFgExCaCEOVO",
-  distance: 1.17,
-  name: "Sweet Views of the Bay",
-  city: "1 Beach St, San Francisco, CA 94133, USA",
+  distance: 2.35,
+  name: "Downtown Burlingame Loop",
+  city: "1501 Chapin Ave, Burlingame, CA 94010, USA",
+  encoded_markers: "37.576799855514444,-122.35128423945673,37.58482625077013,-122.3382379748083,37.58166341018473,-122.33270189540156,37.57496318580176,-122.34480402247675",
 )
