@@ -8,17 +8,12 @@ class RouteIndex extends React.Component {
   }
 
   render() {
-    if (this.props.skateRoutes) {
-      console.log(this.props.skateRoutes);
-    }
-
     const skateRoutes = Object.values(this.props.skateRoutes);
 
     return (
       <div>
         <ul>
           {skateRoutes.map(route => <RouteIndexItem key={route.id} skateRoute={route} />)}
-
         </ul>
       </div>
     );
