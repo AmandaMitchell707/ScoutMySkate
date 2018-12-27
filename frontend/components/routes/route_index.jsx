@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import RouteIndexItem from './route_index_item';
 
@@ -15,7 +16,10 @@ class RouteIndex extends React.Component {
         <div className="my-routes-title-container">
           <h3 className="my-routes-title"><span>MY ROUTES</span></h3>
           <div className="create-route">
-            <button className="create-route-button">CREATE A ROUTE</button>
+            <Link className="nav-login-logout" to="/routes/create">
+              <button className="create-route-button">CREATE A ROUTE</button>
+            </Link>
+
           </div>
         </div>
 
