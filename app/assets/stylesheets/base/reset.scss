@@ -1,6 +1,6 @@
 html, body, header, nav, h1, h2, h3, a, ul, li, button,
 section, img, div, p, form, label, input, textarea,
-span, article, footer {
+span, article, footer, table, thead, tr, th, td {
   margin: 0;
   padding: 0;
   border: 0;
@@ -28,4 +28,9 @@ img {
 button,
 input[type="submit"], select {
   cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
