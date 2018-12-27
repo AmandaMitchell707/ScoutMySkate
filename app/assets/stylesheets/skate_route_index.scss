@@ -41,9 +41,45 @@
   background: #E56E06;
 }
 
+.results-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  border-top: 1px solid #E6E6E5;
+  border-right: 1px solid #E6E6E5;
+}
+
+.results-container td,
+  .results-container th {
+    border-bottom: 1px solid #E6E6E5;
+    border-left: 1px solid #E6E6E5;
+    padding: 10px 5px;
+    font-size: 12px;
+    vertical-align: middle;
+  }
+
+.results-container thead,
+  .results-container tr {
+    background-color: #F9F9F9;
+    text-align: left;
+}
+
+.results-container tbody tr:nth-child(even) {
+  background-color: #F9F9F9;
+}
+
+
+.results-container tbody tr:hover {
+  background: #ECECEC;
+}
+
 @media only screen and (min-width: 768px) {
   .middle-container {
     padding: 14px 14px 85px 14px;
+  }
+
+  .my-routes-container {
+    margin-bottom: 100px;
   }
 }
 
@@ -51,5 +87,12 @@
   .middle-container {
     padding: 14px;
   }
+
+  .results-container td,
+    .results-container th {
+      padding: 15px 10px;
+      font-size: inherit;
+    }
+
 
 }
