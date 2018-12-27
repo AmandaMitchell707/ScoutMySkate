@@ -4,7 +4,7 @@ import RouteIndexItem from './route_index_item';
 
 class RouteIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchAllSkateRoutes();
+    this.props.fetchSkateRoutes();
   }
 
   render() {

@@ -26,8 +26,8 @@ export const createSkateRoute = skateRoute => dispatch => (
   ))
 );
 
-export const fetchAllSkateRoutes = () => dispatch => (
-  APIUtil.fetchAllSkateRoutes().then(routes => (
+export const fetchSkateRoutes = () => dispatch => (
+  APIUtil.fetchSkateRoutes().then(routes => (
     dispatch(receiveSkateRoutes(routes))
   ))
 );

@@ -7,7 +7,7 @@ export const createSkateRoute = skate_route => (
   })
 );
 
-export const fetchAllSkateRoutes = () => (
+export const fetchSkateRoutes = () => (
   $.ajax({
     url: '/api/skate_routes',
     method: 'GET',

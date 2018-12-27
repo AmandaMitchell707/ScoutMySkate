@@ -23,7 +23,7 @@ class RouteIndexItem extends React.Component {
       <li>
         <Link to={`/routes/view/${skateRoute.id}`}>
           <div>{skateRoute.name}</div>
-          <div>{skateRoute.distance}</div>
+          <div>{skateRoute.distance} mi</div>
           <div>{skateRoute.city}</div>
           <div>{creationDate}</div>
         </Link>
