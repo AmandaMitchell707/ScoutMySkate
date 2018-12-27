@@ -11,7 +11,7 @@ class RouteIndexItem extends React.Component {
     let separatedDateTime = dateTime.split('-');
     let day = separatedDateTime[2].slice(0,2);
     let formattedDate = `${day}/${separatedDateTime[1]}/${separatedDateTime[0]}`;
-    
+
     return formattedDate;
   }
 
@@ -20,14 +20,32 @@ class RouteIndexItem extends React.Component {
     let creationDate = this.formatRouteCreationDate();
 
     return (
-      <li>
-        <Link to={`/routes/view/${skateRoute.id}`}>
-          <div>{skateRoute.name}</div>
-          <div>{skateRoute.distance} mi</div>
-          <div>{skateRoute.city}</div>
-          <div>{creationDate}</div>
-        </Link>
-      </li>
+      <tr>
+        <td className="thumbnail-cell">
+          <Link to={`/routes/view/${skateRoute.id}`}>
+            <img alt="route-map"></img>
+          </Link>
+        </td>
+        <td>
+          <Link to={`/routes/view/${skateRoute.id}`}>
+            <span>{creationDate}</span>
+          </Link>
+        </td>
+        <td>
+          <span>{skateRoute.distance} mi</span>
+        </td>
+        <td>
+          <Link to={`/routes/view/${skateRoute.id}`}>
+            <span>{skateRoute.name}</span>
+          </Link>
+        </td>
+        <td>
+          <span>{skateRoute.city}</span>
+        </td>
+        <td>
+          options go here
+        </td>
+      </tr>
     )
   }
 }
