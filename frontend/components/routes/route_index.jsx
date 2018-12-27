@@ -13,21 +13,30 @@ class RouteIndex extends React.Component {
 
     return (
       <div className="middle-container">
-        <div className="my-routes-title-container">
-          <h3 className="my-routes-title"><span>MY ROUTES</span></h3>
-          <div className="create-route">
+        <div className="my-routes-container">
+          <div className="my-routes-title-container">
+            <h3 className="my-routes-title"><span>MY ROUTES</span></h3>
             <Link className="nav-login-logout" to="/routes/create">
               <button className="create-route-button">CREATE A ROUTE</button>
             </Link>
-
           </div>
-        </div>
 
-      <section className="results-container">
-        <ul>
-          {skateRoutes.map(route => <RouteIndexItem key={route.id} skateRoute={route} />)}
-        </ul>
-      </section>
+          <table className="results-container">
+            <thead>
+              <tr>
+                <th><span>Route</span></th>
+                <th><span>Created</span></th>
+                <th><span>Distance</span></th>
+                <th><span>Name</span></th>
+                <th><span>City</span></th>
+                <th><span>Options</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {skateRoutes.map(route => <RouteIndexItem key={route.id} skateRoute={route} />)}
+            </tbody>
+          </table>
+        </div>
       </div>
     );
   }
