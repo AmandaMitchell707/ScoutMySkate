@@ -19,10 +19,15 @@ html {
   height: 100%;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   vertical-align: baseline;
-  /* font-family: 'Armour', 'Helvetica Neue', Helvetica, Arial, sans-serif; */
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Armour', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   height: 100%;
   width: 100%;
   line-height: 1;
@@ -170,6 +175,11 @@ select {
 
 ::selection {
   background: #d3ecfc;
+}
+
+a {
+  color: #0076C0;
+  text-decoration: none;
 }
 
 #root {
