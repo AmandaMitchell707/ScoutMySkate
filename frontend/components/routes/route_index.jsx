@@ -24,7 +24,7 @@ class RouteIndex extends React.Component {
           <table className="results-container">
             <thead>
               <tr>
-                <th><span>Route</span></th>
+                <th className="thumbnail-cell"><span>Route</span></th>
                 <th><span>Created</span></th>
                 <th><span>Distance</span></th>
                 <th><span>Name</span></th>
