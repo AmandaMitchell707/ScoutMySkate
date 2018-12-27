@@ -58,8 +58,7 @@
     vertical-align: middle;
   }
 
-.results-container thead,
-  .results-container tr {
+.results-container thead tr {
     background-color: #F9F9F9;
     text-align: left;
 }
@@ -73,14 +72,9 @@
   background: #ECECEC;
 }
 
-@media only screen and (min-width: 768px) {
-  .middle-container {
-    padding: 14px 14px 85px 14px;
-  }
-
-  .my-routes-container {
-    margin-bottom: 100px;
-  }
+.thumbnail-cell {
+  width: 83px;
+  display: none;
 }
 
 @media only screen and (min-width: 375px) {
@@ -89,10 +83,22 @@
   }
 
   .results-container td,
-    .results-container th {
-      padding: 15px 10px;
-      font-size: inherit;
-    }
+  .results-container th {
+    padding: 15px 10px;
+    font-size: inherit;
+  }
+}
 
+@media only screen and (min-width: 768px) {
+  .middle-container {
+    padding: 14px 14px 85px 14px;
+  }
 
+  .my-routes-container {
+    margin-bottom: 100px;
+  }
+
+  .thumbnail-cell {
+    display: table-cell;
+  }
 }
