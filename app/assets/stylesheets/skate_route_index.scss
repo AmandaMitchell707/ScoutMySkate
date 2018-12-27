@@ -1,0 +1,55 @@
+.middle-container {
+  width: inherit;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px 4px 4px 4px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.route-index-content {
+}
+
+.my-routes-title-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.my-routes-title {
+  font-size: 22px;
+  color: black;
+}
+
+.create-route-button {
+  font-size: 12px;
+  min-width: 60px;
+  background: #FF8714;
+  border-radius: 2px;
+  padding: 12px 15px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 14px;
+  box-shadow: none;
+}
+
+.create-route-button:hover {
+  background: #E56E06;
+}
+
+@media only screen and (min-width: 768px) {
+  .middle-container {
+    padding: 14px 14px 85px 14px;
+  }
+}
+
+@media only screen and (min-width: 375px) {
+  .middle-container {
+    padding: 14px;
+  }
+
+}
