@@ -17,6 +17,12 @@ class Api::SkateRoutesController < ApplicationController
     end
   end
 
+  def destroy
+    @skate_route = SkateRoute.find(params[:id])
+    @skate_route.destroy
+    render json: {}
+  end
+
   private
 
   def skate_route_params
