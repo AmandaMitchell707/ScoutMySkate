@@ -33,7 +33,15 @@ class RouteIndex extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {skateRoutes.map(route => <RouteIndexItem key={route.id} skateRoute={route} />)}
+              {
+                skateRoutes.map(route => (
+                  <RouteIndexItem
+                    key={route.id}
+                    skateRoute={route}
+                    deleteSkateRoute={this.props.deleteSkateRoute} />
+                  )
+                )
+              }
             </tbody>
           </table>
         </div>
