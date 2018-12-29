@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 
 import RouteIndex from './route_index';
-import { fetchSkateRoutes } from '../../actions/skate_route_actions';
+import {
+  fetchSkateRoutes,
+  deleteSkateRoute
+} from '../../actions/skate_route_actions';
 
 const mapStateToProps = state => {
   const skateRoutes = state.entities.skateRoutes;
@@ -12,7 +15,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchSkateRoutes: () => dispatch(fetchSkateRoutes())
+  fetchSkateRoutes: () => dispatch(fetchSkateRoutes()),
+  deleteSkateRoute: (id) => dispatch(deleteSkateRoute(id))
 });
 
 export default connect(
