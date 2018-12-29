@@ -2,10 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class RouteIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   formatRouteCreationDate() {
     let dateTime = this.props.skateRoute.createdAt;
     let separatedDateTime = dateTime.split('-');
@@ -43,7 +39,9 @@ class RouteIndexItem extends React.Component {
           <span>{skateRoute.city}</span>
         </td>
         <td>
-          options go here
+          <a onClick={() => { this.props.deleteSkateRoute(skateRoute.id) }}>
+            <span>Delete</span>
+          </a>
         </td>
       </tr>
     )
