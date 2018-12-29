@@ -180,6 +180,7 @@ select {
 a {
   color: #0076C0;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #root {
