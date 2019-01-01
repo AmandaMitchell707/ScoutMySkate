@@ -16,7 +16,7 @@ class RouteIndex extends React.Component {
         <div className="my-routes-container">
           <div className="my-routes-title-container">
             <h3 className="my-routes-title"><span>MY ROUTES</span></h3>
-            <Link className="nav-login-logout" to="/routes/create">
+            <Link className="nav-buttons" to="/routes/create">
               <button className="create-route-button">CREATE A ROUTE</button>
             </Link>
           </div>
