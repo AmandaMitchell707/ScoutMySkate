@@ -60,7 +60,7 @@
   }
 }
 
-.nav-login-logout {
+.nav-buttons {
   margin: auto 5px auto 5px;
   padding: 0;
   color: #9297a3;
@@ -75,18 +75,18 @@
   background-color: transparent;
 }
 
-.nav-login-logout:hover {
+.nav-buttons:hover {
   color: #424242;
 }
 
 @media only screen and (min-width: 993px) {
-  .nav-login-logout {
+  .nav-buttons {
     font-size: 14px;
   }
 }
 
 @media only screen and (min-width: 481px) {
-  .nav-login-logout, .nav-signup {
+  .nav-buttons, .nav-signup {
     font-weight: 500;
     letter-spacing: 0.2px;
   }
@@ -103,4 +103,5 @@
   padding: 0 8px;
   line-height: 2.2;
   letter-spacing: -0.4px;
+  box-shadow: none;
 }
