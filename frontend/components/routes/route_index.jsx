@@ -17,7 +17,7 @@ class RouteIndex extends React.Component {
           <div className="my-routes-title-container">
             <h3 className="my-routes-title"><span>MY ROUTES</span></h3>
             <Link className="nav-buttons" to="/routes/create">
-              <button className="create-route-button">CREATE A ROUTE</button>
+              <button className="square-button orange">CREATE A ROUTE</button>
             </Link>
           </div>
 
