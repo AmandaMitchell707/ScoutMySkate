@@ -6,12 +6,12 @@ export default ({ currentUser, logout }) => {
     <div className="right-nav">
       <Link className="nav-buttons" to="/routes/my_routes">My Routes</Link>
       <Link className="nav-buttons" to="/routes/create">Create Route</Link>
-      <button className="nav-signup" onClick={logout}>Logout</button>
+      <button className="nav-signup-logout" onClick={logout}>Logout</button>
     </div>
   ) : (
     <div className="right-nav">
       <Link className="nav-buttons" to="/auth/login">Log In</Link>
-      <Link className="nav-signup" to="/auth/signup">SIGN UP</Link>
+      <Link className="nav-signup-logout" to="/auth/signup">SIGN UP</Link>
     </div>
   );
 
