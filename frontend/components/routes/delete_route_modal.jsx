@@ -1,21 +1,18 @@
 import React from 'react';
 
 class DeleteRouteModal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modalOpen: false;
-    }
-  }
-
   render() {
-    if (this.state.modalOpen === false) {
+    if (this.props.show === false) {
       return null;
     } else {
       return (
         <div className="modal-background">
           <div className="modal-child">
-            
+            <h3 className="modal-header">Delete Route?</h3>
+            <div className="modal-body">
+              <button onClick={this.props.deleteSkateRoute}>OK</button>
+              <button onClick={this.props.hide}>Cancel</button>
+            </div>
           </div>
         </div>
       );
