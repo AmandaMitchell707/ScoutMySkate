@@ -9,9 +9,7 @@ import {
 const mapStateToProps = state => {
   const skateRoutes = state.entities.skateRoutes;
 
-  return ({
-    skateRoutes
-  });
+  return ({ skateRoutes });
 };
 
 const mapDispatchToProps = dispatch => ({
