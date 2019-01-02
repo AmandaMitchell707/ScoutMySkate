@@ -10,8 +10,12 @@ class DeleteRouteModal extends React.Component {
           <div className="modal-child">
             <h3 className="modal-header">Delete Route?</h3>
             <div className="modal-body">
-              <button onClick={this.props.deleteSkateRoute}>OK</button>
-              <button onClick={this.props.hide}>Cancel</button>
+              <button
+                className="confirm-delete-button square-button orange small"
+                onClick={this.props.deleteSkateRoute}>OK</button>
+              <button
+                className="cancel-button square-button small"
+                onClick={this.props.hide}>Cancel</button>
             </div>
           </div>
         </div>
