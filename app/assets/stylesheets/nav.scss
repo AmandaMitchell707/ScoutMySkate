@@ -86,13 +86,13 @@
 }
 
 @media only screen and (min-width: 481px) {
-  .nav-buttons, .nav-signup {
+  .nav-buttons, .nav-signup-logout {
     font-weight: 500;
     letter-spacing: 0.2px;
   }
 }
 
-.nav-signup {
+.nav-signup-logout {
   -webkit-box-align: center;
   margin: auto 10px auto 5px;
   color: white;
@@ -104,4 +104,8 @@
   line-height: 2.2;
   letter-spacing: -0.4px;
   box-shadow: none;
+}
+
+.nav-signup-logout:hover {
+  background: #18D073;
 }
