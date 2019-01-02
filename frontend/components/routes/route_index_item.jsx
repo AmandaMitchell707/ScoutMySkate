@@ -1,7 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import DeleteRouteModal from './delete_route_modal';
+
 class RouteIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      deleteModalOpen: false,
+    }
+    this.showDeleteModal = this.showDeleteModal.bind(this);
+    this.hideDeleteModal = this.hideDeleteModal.bind(this);
+  }
+
   formatRouteCreationDate() {
     let dateTime = this.props.skateRoute.createdAt;
     let separatedDateTime = dateTime.split('-');
@@ -9,6 +20,14 @@ class RouteIndexItem extends React.Component {
     let formattedDate = `${day}/${separatedDateTime[1]}/${separatedDateTime[0]}`;
 
     return formattedDate;
+  }
+
+  showDeleteModal() {
+    this.setState({ deleteModalOpen: true });
+  }
+
+  hideDeleteModal() {
+    this.setState({ deleteModalOpen: false });
   }
 
   render() {
@@ -39,9 +58,13 @@ class RouteIndexItem extends React.Component {
           <span>{skateRoute.city}</span>
         </td>
         <td>
-          <a onClick={() => { this.props.deleteSkateRoute(skateRoute.id) }}>
+          <a onClick={this.showDeleteModal}>
             <span>Delete</span>
           </a>
+          <DeleteRouteModal
+            show={this.state.deleteModalOpen}
+            deleteSkateRoute={ () => this.props.deleteSkateRoute(skateRoute.id) }
+            hide={this.hideDeleteModal}/>
         </td>
       </tr>
     )
