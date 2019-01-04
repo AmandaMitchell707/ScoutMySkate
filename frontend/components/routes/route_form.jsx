@@ -222,7 +222,7 @@ class RouteForm extends React.Component {
                 <div>
                   <input
                     type="search"
-                    className="location-form-input"
+                    className="form-input"
                     id="location-form-input"
                     value={this.state.location}
                     onChange={this.update('location')}
@@ -239,17 +239,21 @@ class RouteForm extends React.Component {
           </section>
           <br />
           <form className="new-route-form" onSubmit={this.saveRoute}>
-            <input
-              type="text"
-              className="name-input"
-              id="location-form-input"
-              value={this.state.name}
-              onChange={this.update('name')}
-              placeholder="Name this map"
-            />
+            <div className="controls">
+              <input
+                type="text"
+                className="form-input"
+                id="name-form-input"
+                value={this.state.name}
+                onChange={this.update('name')}
+                placeholder="Name this map"
+                />
+              <span className="required"> *</span>
+            </div>
             <button
               type="submit"
-              className="new-route-submit"
+              className="orange"
+              id="new-route-submit"
             >SAVE ROUTE</button>
           </form>
         </div>
