@@ -9,7 +9,7 @@
   border-color: rgb(17, 17, 17);
   border: 1px solid #111;
   box-shadow: 2px 4px 8px 0px rgba(0,0,0,0.35);
-  width: 225px;
+  width: 170px;
   height: 90px;
   z-index: 100;
   color: #6e6e6e;
@@ -30,7 +30,7 @@
   margin: 0px;
   padding: 0px;
   vertical-align: baseline;
-  width: 225px;
+  width: inherit;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,6 +43,7 @@
   font-family: "Open Sans", sans-serif;
   line-height: 18px;
   font-stretch: 100%;
+
   label, h2 {
     color: inherit;
   }
@@ -51,4 +52,8 @@
 .toolbar-buttons {
   background-color: #F4F4F4;
   height: 50%;
+  
+  button {
+    margin: 3px;
+  }
 }
