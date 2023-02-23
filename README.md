@@ -2,7 +2,6 @@
 
 * This README documents the steps necessary to get the application up and running.
 * Welcome to Scout My Skate, the Map My Run clone for skate lovers.
-* [Scout My Skate Live](https://scout-my-skate.herokuapp.com/#/)
 
 # Setup
 * git clone the repo with the url: https://github.com/AmandaMitchell707/ScoutMySkate
